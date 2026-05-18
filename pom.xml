@@ -412,6 +412,9 @@ under the License.
   </contributors>
 
   <properties>
+
+    <sonar.organization>gianpaolo-pestilli</sonar.organization>
+
     <project.build.outputTimestamp>2025-11-25T06:53:52Z</project.build.outputTimestamp>
     <syncope.version>${project.version}</syncope.version>
 
@@ -2517,5 +2520,7 @@ under the License.
     <module>archetype</module>
     <module>standalone</module>
   </modules>
+
+
 
 </project>
