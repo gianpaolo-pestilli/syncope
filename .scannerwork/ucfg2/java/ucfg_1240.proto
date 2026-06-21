@@ -1,0 +1,14 @@
+
+Yorg.apache.syncope.client.console.PreferenceManager#getPaginatorChoices()Ljava/util/List;_
+Uclient\console\src\main\java\org\apache\syncope\client\console\PreferenceManager.javaB B(,"1*
+1C C( L
+J
+C C( 
+%0java.util.List"__id*"
+
+__unknown_file (
+""""
+C C(!
+
+%0java.util.ListB75
+3org.apache.syncope.client.console.PreferenceManagerH

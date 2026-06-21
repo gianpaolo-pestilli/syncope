@@ -1,0 +1,34 @@
+
+qorg.apache.syncope.core.provisioning.api.serialization.POJOHelper#serialize(Ljava/lang/Object;)Ljava/lang/String;t
+jcore\provisioning-api\src\main\java\org\apache\syncope\core\provisioning\api\serialization\POJOHelper.java6 6(""5*h
+2: :(6R
+P
+: :(6
+resultjava.lang.String"__id*"
+
+__unknown_file (
+""*
+1*R
+4: :(<
+:
+: :(
+%0"__id*"
+
+__unknown_file (
+""*
+2*h
+57 7(R
+P
+7 7(
+resultjava.lang.String"__id*"
+
+__unknown_file (
+""*
+4*7
+1? ?("(
+? ?(
+
+resultjava.lang.String:&
+6# 6(6
+objectjava.lang.ObjectBE"C
+Aorg.apache.syncope.core.provisioning.api.serialization.POJOHelperH

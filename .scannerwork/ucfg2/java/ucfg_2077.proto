@@ -1,0 +1,6 @@
+
+borg.apache.syncope.core.persistence.jpa.DummyImplementationLookup#getPriority()Ljava/lang/Integer;s
+icore\persistence-jpa\src\test\java\org\apache\syncope\core\persistence\jpa\DummyImplementationLookup.java& &("1*
+1' '("
+' '(2BEC
+Aorg.apache.syncope.core.persistence.jpa.DummyImplementationLookupH

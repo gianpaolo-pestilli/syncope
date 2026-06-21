@@ -1,0 +1,9 @@
+
+org.apache.syncope.common.rest.api.beans.AnyQuery$Builder#details(Z)Lorg/apache/syncope/common/rest/api/beans/AnyQuery$Builder;^
+Tcommon\rest-api\src\main\java\org\apache\syncope\common\rest\api\beans\AnyQuery.java& &("1*X
+1' '("I
+( ((=;
+9org.apache.syncope.common.rest.api.beans.AnyQuery$Builder:
+& &(4
+detailsbooleanB=;
+9org.apache.syncope.common.rest.api.beans.AnyQuery$BuilderH

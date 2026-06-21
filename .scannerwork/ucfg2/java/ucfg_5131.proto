@@ -1,0 +1,8 @@
+
+Xorg.apache.syncope.core.persistence.api.entity.MembershipType#getKey()Ljava/lang/String;o
+ecore\persistence-api\src\main\java\org\apache\syncope\core\persistence\api\entity\MembershipType.java# #("1*)
+1$ $("
+$ $(
+
+MembershipBA?
+=org.apache.syncope.core.persistence.api.entity.MembershipTypeH

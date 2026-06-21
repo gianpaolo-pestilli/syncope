@@ -1,0 +1,7 @@
+
+xorg.apache.syncope.core.persistence.jpa.entity.task.AbstractProvisioningTask#getJobDelegateClassName()Ljava/lang/String;~
+tcore\persistence-jpa\src\main\java\org\apache\syncope\core\persistence\jpa\entity\task\AbstractProvisioningTask.javaS S()"1*!
+1T T("
+T T(
+""BPN
+Lorg.apache.syncope.core.persistence.jpa.entity.task.AbstractProvisioningTaskH

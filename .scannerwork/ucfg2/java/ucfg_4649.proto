@@ -1,0 +1,15 @@
+
+eorg.apache.syncope.core.spring.security.SecureRandomUtils#generateRandomPassword(I)Ljava/lang/String;b
+Xcore\spring\src\main\java\org\apache\syncope\core\spring\security\SecureRandomUtils.java (/"1*{
+1 ( X
+V
+N (T 
+%0java.security.SecureRandom"__id*"
+
+__unknown_file (
+"""
+ (V
+"":
+0 (E
+tokenLengthintB=";
+9org.apache.syncope.core.spring.security.SecureRandomUtilsH

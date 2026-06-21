@@ -1,0 +1,14 @@
+
+corg.apache.syncope.core.workflow.activiti.ActivitiDefinitionLoader#getPriority()Ljava/lang/Integer;v
+lcore\workflow-activiti\src\main\java\org\apache\syncope\core\workflow\activiti\ActivitiDefinitionLoader.java7 7("1*i
+18 8(A
+?
+8 8( 	
+%0int"__id*"
+
+__unknown_file (
+"""
+8 8(!
+	
+%0intBFD
+Borg.apache.syncope.core.workflow.activiti.ActivitiDefinitionLoaderH

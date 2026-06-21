@@ -1,0 +1,15 @@
+
+forg.apache.syncope.core.persistence.jpa.content.XMLContentExporter#isTableAllowed(Ljava/lang/String;)Zt
+jcore\persistence-jpa\src\main\java\org\apache\syncope\core\persistence\jpa\content\XMLContentExporter.javab b(""1*n
+1c c(K
+I
+c( c(E
+%0java.util.Set"__id*"
+
+__unknown_file (
+"""
+c i(
+"":)
+b# b(9
+	tableNamejava.lang.StringBFD
+Borg.apache.syncope.core.persistence.jpa.content.XMLContentExporterX
