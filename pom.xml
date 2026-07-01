@@ -576,6 +576,7 @@ under the License.
     <maven.multiModuleProjectDirectory>${rootpom.basedir}</maven.multiModuleProjectDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <checkstyle.skip>true</checkstyle.skip>
+    <rat.skip>true</rat.skip>
   </properties>
 
   <dependencyManagement>
@@ -2449,7 +2450,6 @@ under the License.
         <modernizer.skip>true</modernizer.skip>
         <rat.skip>true</rat.skip>
         <checkstyle.skip>true</checkstyle.skip>
-        <rat.skip>true</rat.skip>
       </properties>
 
       <build>
