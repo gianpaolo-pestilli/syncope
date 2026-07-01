@@ -18,8 +18,8 @@ name: "Push to DockerHub"
 
 on:
   push:
-    branches:
-      - master
+    branches-ignore:
+      - '**'
 
 jobs:
   push2DockerHub:
