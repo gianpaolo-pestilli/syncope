@@ -437,7 +437,7 @@ under the License.
         </includes>
       </testResource>
       <testResource>
-        <directory>${basedir}/../../core/spring/src/test/resources</directory>
+        <directory>../../core/spring/src/test-manuali-1/resources</directory>
         <includes>
           <include>*.groovy</include>
         </includes>
