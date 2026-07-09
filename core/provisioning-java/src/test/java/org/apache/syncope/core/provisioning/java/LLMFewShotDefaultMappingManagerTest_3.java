@@ -19,7 +19,6 @@ import org.apache.syncope.common.lib.to.OrgUnit;
 import org.apache.syncope.common.lib.to.Provision;
 import org.apache.syncope.common.lib.to.RealmTO;
 import org.apache.syncope.common.lib.to.UserTO;
-import org.apache.syncope.common.lib.types.AnyTypeKind;
 import org.apache.syncope.common.lib.types.AttrSchemaType;
 import org.apache.syncope.core.persistence.api.EncryptorManager;
 import org.apache.syncope.core.persistence.api.dao.AnyObjectDAO;
@@ -30,8 +29,6 @@ import org.apache.syncope.core.persistence.api.dao.RelationshipTypeDAO;
 import org.apache.syncope.core.persistence.api.dao.UserDAO;
 import org.apache.syncope.core.persistence.api.entity.Any;
 import org.apache.syncope.core.persistence.api.entity.ExternalResource;
-import org.apache.syncope.core.persistence.api.entity.PlainAttr;
-import org.apache.syncope.core.persistence.api.entity.PlainAttrValue;
 import org.apache.syncope.core.persistence.api.entity.Realm;
 import org.apache.syncope.core.persistence.api.entity.user.Account;
 import org.apache.syncope.core.persistence.api.entity.user.LinkedAccount;
@@ -43,10 +40,11 @@ import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.MappingManager;
 import org.apache.syncope.core.provisioning.api.PlainAttrGetter;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
 import org.identityconnectors.framework.common.objects.Name;
-import org.identityconnectors.framework.common.objects.OperationalAttributes;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -201,7 +199,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
         User user = mock(User.class);
         when(mapping.getItems()).thenReturn(Collections.emptyList());
 
-        assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, Boolean.TRUE, resource, provision));
+        Assertions.assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, Boolean.TRUE, resource, provision));
     }
 
     @Test
@@ -209,7 +207,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
         User user = mock(User.class);
         when(mapping.getItems()).thenReturn(Collections.emptyList());
 
-        assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, Boolean.FALSE, resource, provision));
+        Assertions.assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, Boolean.FALSE, resource, provision));
     }
 
     @Test
@@ -217,7 +215,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
         User user = mock(User.class);
         when(mapping.getItems()).thenReturn(Collections.emptyList());
 
-        assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, "clearPassword", true, null, resource, provision));
+        Assertions.assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, "clearPassword", true, null, resource, provision));
     }
 
     @Test
@@ -225,7 +223,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
         User user = mock(User.class);
         when(mapping.getItems()).thenReturn(Collections.emptyList());
 
-        assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, true, null, resource, provision));
+        Assertions.assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, true, null, resource, provision));
     }
 
     @Test
@@ -278,7 +276,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
                         any(AccountGetter.class),
                         any(PlainAttrGetter.class));
 
-        assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, null, resource, provision));
+        Assertions.assertDoesNotThrow(() -> manager.prepareAttrsFromAny(user, null, false, null, resource, provision));
     }
 
     @Test
@@ -298,7 +296,7 @@ class LLMFewShotDefaultMappingManagerTest_3 {
         LinkedAccount account = mock(LinkedAccount.class);
         when(mapping.getItems()).thenReturn(Collections.emptyList());
 
-        assertDoesNotThrow(() ->
+        Assertions.assertDoesNotThrow(() ->
                 manager.prepareAttrsFromLinkedAccount(user, account, "newPassword", true, provision));
     }
 

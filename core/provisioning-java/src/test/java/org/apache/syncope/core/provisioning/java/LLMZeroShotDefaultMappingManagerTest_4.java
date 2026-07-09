@@ -1,4 +1,4 @@
-/*
+package org.apache.syncope.core.provisioning.java;/*
  * Boundary-value and edge-case tests for DefaultMappingManager.
  *
  * Notes:
@@ -10,7 +10,6 @@
  * - PreparedAttr is used with constructor arguments compatible with MappingManager.PreparedAttr
  *   as exposed by the Syncope MappingManager API. [2](https://syncope.apache.org/apidocs/4.1/org/apache/syncope/core/provisioning/api/MappingManager.html)
  */
-package org.apache.syncope.core.provisioning.java;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +42,7 @@ import org.apache.syncope.core.provisioning.api.DerAttrHandler;
 import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.MappingManager;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
 import org.identityconnectors.framework.common.objects.Name;

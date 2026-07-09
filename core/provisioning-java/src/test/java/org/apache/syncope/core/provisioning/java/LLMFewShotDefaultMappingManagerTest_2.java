@@ -1,4 +1,4 @@
-/*
+package org.apache.syncope.core.provisioning.java;/*
  * Corrected DefaultMappingManagerTest.
  *
  * Main fixes vs previous version:
@@ -10,7 +10,6 @@
  * Sources used: uploaded DefaultMappingManager.java (imports/package/dependencies) and Apache Syncope GitHub/API lookup.
  * [1](https://uniroma2-my.sharepoint.com/personal/gianpaolo_pestilli_students_uniroma2_eu/Documents/File%20di%20Microsoft%20Copilot%20Chat/DefaultMappingManager.java)[2](https://github.com/apache/syncope)
  */
-package org.apache.syncope.core.provisioning.java;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -20,7 +19,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Base64;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -42,7 +40,6 @@ import org.apache.syncope.core.persistence.api.dao.RelationshipTypeDAO;
 import org.apache.syncope.core.persistence.api.dao.UserDAO;
 import org.apache.syncope.core.persistence.api.entity.Any;
 import org.apache.syncope.core.persistence.api.entity.ExternalResource;
-import org.apache.syncope.core.persistence.api.entity.PlainAttr;
 import org.apache.syncope.core.persistence.api.entity.PlainAttrValue;
 import org.apache.syncope.core.persistence.api.entity.Realm;
 import org.apache.syncope.core.persistence.api.entity.user.Account;
@@ -55,6 +52,7 @@ import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.MappingManager;
 import org.apache.syncope.core.provisioning.api.PlainAttrGetter;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.common.security.GuardedString;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
@@ -62,6 +60,7 @@ import org.identityconnectors.framework.common.objects.AttributeUtil;
 import org.identityconnectors.framework.common.objects.Name;
 import org.identityconnectors.framework.common.objects.OperationalAttributes;
 import org.identityconnectors.framework.common.objects.Uid;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -161,21 +160,21 @@ class LLMFewShotDefaultMappingManagerTest_2 {
     void testHasMustChangePasswordWithNoMappingReturnsFalse() {
         Provision empty = new Provision();
 
-        assertFalse(manager.hasMustChangePassword(empty));
+        Assertions.assertFalse(manager.hasMustChangePassword(empty));
     }
 
     @Test
     void testHasMustChangePasswordWithNonPasswordItemsReturnsFalse() {
         mapping.getItems().add(mockItem("username", Name.NAME, false, false));
 
-        assertFalse(manager.hasMustChangePassword(provision));
+        Assertions.assertFalse(manager.hasMustChangePassword(provision));
     }
 
     @Test
     void testHasMustChangePasswordWithPasswordItemReturnsTrue() {
         mapping.getItems().add(mockItem("password", OperationalAttributes.PASSWORD_NAME, false, true));
 
-        assertTrue(manager.hasMustChangePassword(provision));
+        Assertions.assertTrue(manager.hasMustChangePassword(provision));
     }
 
     @Test
@@ -755,7 +754,7 @@ class LLMFewShotDefaultMappingManagerTest_2 {
                 final MappingManager.PreparedAttr preparedAttr,
                 final Set<Attribute> attributes) {
 
-            return DefaultMappingManager.processPreparedAttr(preparedAttr, attributes);
+            return processPreparedAttr(preparedAttr, attributes);
         }
     }
 }

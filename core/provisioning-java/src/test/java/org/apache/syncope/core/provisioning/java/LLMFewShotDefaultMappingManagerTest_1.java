@@ -31,6 +31,7 @@ import org.apache.syncope.core.persistence.api.entity.ExternalResource;
 import org.apache.syncope.core.provisioning.api.DerAttrHandler;
 import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
 import org.identityconnectors.framework.common.objects.Name;

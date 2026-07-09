@@ -582,6 +582,10 @@ under the License.
   <dependencyManagement>
 
     <dependencies>
+
+
+
+
       <dependency>
         <groupId>jakarta.servlet</groupId>
         <artifactId>jakarta.servlet-api</artifactId>
@@ -1566,6 +1570,12 @@ under the License.
         <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
+
+    <pluginRepository>
+      <id>EvoSuite</id>
+      <name>EvoSuite Repository</name>
+      <url>http://www.evosuite.org/m2</url>
+    </pluginRepository>
   </pluginRepositories>
 
   <build>
@@ -1573,6 +1583,9 @@ under the License.
 
     <pluginManagement>
       <plugins>
+
+
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>

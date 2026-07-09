@@ -1,4 +1,4 @@
-/*
+package org.apache.syncope.core.provisioning.java;/*
  * Black-box JUnit 5 tests for DefaultMappingManager.
  *
  * Notes:
@@ -7,7 +7,6 @@
  * - PreparedAttrs is deliberately asserted only as non-null: no assumed attrs(), attributes(),
  *   key(), name(), or other record component accessor is used.
  */
-package org.apache.syncope.core.provisioning.java;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -49,9 +48,11 @@ import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.MappingManager;
 import org.apache.syncope.core.provisioning.api.PlainAttrGetter;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
 import org.identityconnectors.framework.common.objects.OperationalAttributes;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -408,7 +409,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         ExternalResource resource = mock(ExternalResource.class);
         Provision provision = provisionWith();
 
-        MappingManager.PreparedAttrs prepared = assertDoesNotThrow(
+        MappingManager.PreparedAttrs prepared = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromAny(
                         any,
                         null,
@@ -427,7 +428,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         ExternalResource resource = mock(ExternalResource.class);
         Provision provision = provisionWith();
 
-        MappingManager.PreparedAttrs prepared = assertDoesNotThrow(
+        MappingManager.PreparedAttrs prepared = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromAny(
                         any,
                         null,
@@ -446,7 +447,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         ExternalResource resource = mock(ExternalResource.class);
         Provision provision = provisionWith();
 
-        MappingManager.PreparedAttrs prepared = assertDoesNotThrow(
+        MappingManager.PreparedAttrs prepared = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromAny(
                         any,
                         "clearPassword",
@@ -464,7 +465,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         Realm realm = mock(Realm.class);
         ExternalResource resource = mock(ExternalResource.class);
 
-        MappingManager.PreparedAttrs prepared = assertDoesNotThrow(
+        MappingManager.PreparedAttrs prepared = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromRealm(realm, resource));
 
         assertNotNull(prepared);
@@ -496,7 +497,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         LinkedAccount linkedAccount = mock(LinkedAccount.class);
         Provision provision = provisionWith();
 
-        Set<Attribute> attrs = assertDoesNotThrow(
+        Set<Attribute> attrs = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromLinkedAccount(
                         user,
                         linkedAccount,
@@ -514,7 +515,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         LinkedAccount linkedAccount = mock(LinkedAccount.class);
         Provision provision = provisionWith();
 
-        Set<Attribute> attrs = assertDoesNotThrow(
+        Set<Attribute> attrs = Assertions.assertDoesNotThrow(
                 () -> manager.prepareAttrsFromLinkedAccount(
                         user,
                         linkedAccount,
@@ -621,7 +622,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         Any any = mock(Any.class);
         Provision provision = provisionWith(item("email", "mail"));
 
-        Optional<String> value = assertDoesNotThrow(
+        Optional<String> value = Assertions.assertDoesNotThrow(
                 () -> manager.getConnObjectKeyValue(any, resource, provision));
 
         assertNotNull(value);
@@ -635,7 +636,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         Any any = mock(Any.class);
         Provision provision = provisionWith(connObjectKeyItem("username", "__NAME__"));
 
-        Optional<String> value = assertDoesNotThrow(
+        Optional<String> value = Assertions.assertDoesNotThrow(
                 () -> manager.getConnObjectKeyValue(any, resource, provision));
 
         assertNotNull(value);
@@ -647,7 +648,7 @@ class LLMZeroShotDefaultMappingManagerTest_3 {
         ExternalResource resource = mock(ExternalResource.class);
         Realm realm = mock(Realm.class);
 
-        Optional<String> value = assertDoesNotThrow(
+        Optional<String> value = Assertions.assertDoesNotThrow(
                 () -> manager.getConnObjectKeyValue(realm, resource));
 
         assertNotNull(value);

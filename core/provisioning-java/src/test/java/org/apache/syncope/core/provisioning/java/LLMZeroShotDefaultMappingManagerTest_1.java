@@ -1,4 +1,5 @@
 package org.apache.syncope.core.provisioning.java;
+
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -44,14 +45,12 @@ import org.apache.syncope.core.provisioning.api.IntAttrNameParser;
 import org.apache.syncope.core.provisioning.api.MappingManager;
 import org.apache.syncope.core.provisioning.api.PlainAttrGetter;
 import org.apache.syncope.core.provisioning.api.jexl.JexlTools;
+import org.apache.syncope.core.provisioning.java.DefaultMappingManager;
 import org.identityconnectors.framework.common.objects.Attribute;
 import org.identityconnectors.framework.common.objects.AttributeBuilder;
 import org.identityconnectors.framework.common.objects.Name;
 import org.identityconnectors.framework.common.objects.OperationalAttributes;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -167,35 +166,35 @@ class LLMZeroShotDefaultMappingManagerTest_1 {
         void returnsFalseWhenProvisionHasNoMapping() {
             Provision provision = new Provision();
 
-            assertFalse(manager.hasMustChangePassword(provision));
+            Assertions.assertFalse(manager.hasMustChangePassword(provision));
         }
 
         @Test
         void returnsFalseWhenMappingHasNoItems() {
             Provision provision = provision();
 
-            assertFalse(manager.hasMustChangePassword(provision));
+            Assertions.assertFalse(manager.hasMustChangePassword(provision));
         }
 
         @Test
         void returnsFalseWhenNoMustChangePasswordItemExists() {
             Provision provision = provision(item("username", "uid"), item("email", "mail"));
 
-            assertFalse(manager.hasMustChangePassword(provision));
+            Assertions.assertFalse(manager.hasMustChangePassword(provision));
         }
 
         @Test
         void returnsTrueWhenMustChangePasswordItemExists() {
             Provision provision = provision(item("username", "uid"), item("mustChangePassword", "pwdReset"));
 
-            assertTrue(manager.hasMustChangePassword(provision));
+            Assertions.assertTrue(manager.hasMustChangePassword(provision));
         }
 
         @Test
         void isCaseSensitiveForMustChangePassword() {
             Provision provision = provision(item("MustChangePassword", "pwdReset"));
 
-            assertFalse(manager.hasMustChangePassword(provision));
+            Assertions.assertFalse(manager.hasMustChangePassword(provision));
         }
     }
 

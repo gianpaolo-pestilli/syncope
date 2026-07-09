@@ -38,6 +38,7 @@ under the License.
   </properties>
 
   <dependencies>
+
     <dependency> 
       <groupId>jakarta.servlet</groupId> 
       <artifactId>jakarta.servlet-api</artifactId> 
@@ -123,10 +124,36 @@ under the License.
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.junit.vintage</groupId>
+      <artifactId>junit-vintage-engine</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.evosuite.plugins</groupId>
+        <artifactId>evosuite-maven-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <properties>
+            <property>
+              <name>listener</name>
+              <value>org.evosuite.runtime.InitializingListener</value>
+            </property>
+          </properties>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
