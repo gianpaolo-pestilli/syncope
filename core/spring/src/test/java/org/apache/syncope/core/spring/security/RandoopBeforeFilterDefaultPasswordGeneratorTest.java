@@ -9,7 +9,7 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RandoopBeforeFilterDefaultPasswordGeneratorTest {
 
-       public static boolean debug = false;
+    public static boolean debug = false;
 
     public void assertBooleanArrayEquals(boolean[] expectedArray, boolean[] actualArray) {
         if (expectedArray.length != actualArray.length) {

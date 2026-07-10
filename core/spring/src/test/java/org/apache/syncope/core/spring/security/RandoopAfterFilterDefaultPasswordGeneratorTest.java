@@ -9,79 +9,1313 @@ import org.junit.runners.MethodSorters;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class RandoopAfterFilterDefaultPasswordGeneratorTest {
-
-        // Selezionati tra i test che esercitano il componente (SUT)
-        // per garantire l'adeguatezza del testing come richiesto dal corso (Source 143).
-
-        @Test
-        public void test004() throws Throwable {
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            defaultPasswordGenerator0.generate(list0);
+    public static boolean debug = false;
+    public void assertBooleanArrayEquals(boolean[] expectedArray, boolean[] actualArray) {
+        if (expectedArray.length != actualArray.length) {
+            throw new AssertionError("Array lengths differ: " + expectedArray.length + " != " + actualArray.length);
         }
-
-        @Test
-        public void test015() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test022() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test031() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test045() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            String s1 = defaultPasswordGenerator0.generate(list0);
-            Assert.assertNotNull(s1);
-        }
-
-        @Test
-        public void test067() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test088() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test102() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test120() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            defaultPasswordGenerator0.generate(list0);
-        }
-
-        @Test
-        public void test144() throws Throwable {
-            DefaultPasswordGenerator defaultPasswordGenerator0 = new DefaultPasswordGenerator();
-            java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> list0 = new java.util.ArrayList<>();
-            String s1 = defaultPasswordGenerator0.generate(list0);
-            Assert.assertNotNull(s1);
+        for (int i = 0; i < expectedArray.length; i++) {
+            if (expectedArray[i] != actualArray[i]) {
+                throw new AssertionError("Arrays differ at index " + i + ": " + expectedArray[i] + " != " + actualArray[i]);
+            }
         }
     }
+    @Test
+    public void test002() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test002");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource1 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray2 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList3 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList3, realmArray2);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str5 = defaultPasswordGenerator0.generate(externalResource1, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList3);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(realmArray2);
+        org.junit.Assert.assertArrayEquals(realmArray2, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+    }
+
+    @Test
+    public void test003() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test003");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList1 = null;
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str2 = defaultPasswordGenerator0.generate(passwordPolicyList1);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"java.util.List.forEach(java.util.function.Consumer)\" because \"policies\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+    }
+
+    @Test
+    public void test005() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test005");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        java.lang.Class<?> wildcardClass5 = defaultPasswordGenerator0.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "1) test005(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "8u7z4Y9e" + "'", str4, "8u7z4Y9e");
+        org.junit.Assert.assertNotNull(wildcardClass5);
+    }
+
+    @Test
+    public void test010() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test010");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator5 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray6 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList7 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7, passwordPolicyArray6);
+        java.lang.String str9 = defaultPasswordGenerator5.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        java.lang.String str10 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource11 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray12 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList13 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList13, realmArray12);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str15 = defaultPasswordGenerator0.generate(externalResource11, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList13);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "6) test010(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "J0s6A06X" + "'", str4, "J0s6A06X");
+        org.junit.Assert.assertNotNull(passwordPolicyArray6);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray6, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+// flaky "3) test010(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str9 + "' != '" + "8H09OO7y" + "'", str9, "8H09OO7y");
+// flaky "1) test010(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str10 + "' != '" + "20Z6uo5O" + "'", str10, "20Z6uo5O");
+        org.junit.Assert.assertNotNull(realmArray12);
+        org.junit.Assert.assertArrayEquals(realmArray12, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+    }
+
+    @Test
+    public void test020() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test020");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray14 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList15 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean16 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15, passwordPolicyArray14);
+        java.lang.String str17 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator18 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray19 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList20 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20, passwordPolicyArray19);
+        java.lang.String str22 = defaultPasswordGenerator18.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        java.lang.String str23 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator24 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray25 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList26 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26, passwordPolicyArray25);
+        java.lang.String str28 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator29 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray30 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList31 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31, passwordPolicyArray30);
+        java.lang.String str33 = defaultPasswordGenerator29.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31);
+        java.lang.String str34 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31);
+        java.lang.String str35 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31);
+        java.lang.String str36 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource37 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray38 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList39 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean40 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList39, realmArray38);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str41 = defaultPasswordGenerator0.generate(externalResource37, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList39);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "16) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "97jjF3c9" + "'", str4, "97jjF3c9");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "13) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "2jq162ph" + "'", str8, "2jq162ph");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "9) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "9K9e9R6D" + "'", str13, "9K9e9R6D");
+        org.junit.Assert.assertNotNull(passwordPolicyArray14);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray14, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+// flaky "4) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str17 + "' != '" + "hkf22U58" + "'", str17, "hkf22U58");
+        org.junit.Assert.assertNotNull(passwordPolicyArray19);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray19, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str22 + "' != '" + "7Il56CV5" + "'", str22, "7Il56CV5");
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "3aH08L2V" + "'", str23, "3aH08L2V");
+        org.junit.Assert.assertNotNull(passwordPolicyArray25);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray25, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str28 + "' != '" + "7kOp44p3" + "'", str28, "7kOp44p3");
+        org.junit.Assert.assertNotNull(passwordPolicyArray30);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray30, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str33 + "' != '" + "PnX017Y4" + "'", str33, "PnX017Y4");
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str34 + "' != '" + "toAN0458" + "'", str34, "toAN0458");
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str35 + "' != '" + "YJd513U6" + "'", str35, "YJd513U6");
+// flaky "2) test020(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str36 + "' != '" + "343suG1W" + "'", str36, "343suG1W");
+        org.junit.Assert.assertNotNull(realmArray38);
+        org.junit.Assert.assertArrayEquals(realmArray38, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+    }
+
+    @Test
+    public void test030() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test030");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator10 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray11 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList12 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12, passwordPolicyArray11);
+        java.lang.String str14 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray15 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList16 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16, passwordPolicyArray15);
+        java.lang.String str18 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        java.lang.String str19 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        java.lang.String str20 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator21 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray22 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList23 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23, passwordPolicyArray22);
+        java.lang.String str25 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray26 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList27 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean28 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList27, passwordPolicyArray26);
+        java.lang.String str29 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList27);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator30 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray31 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList32 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32, passwordPolicyArray31);
+        java.lang.String str34 = defaultPasswordGenerator30.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32);
+        java.lang.String str35 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator36 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray37 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList38 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38, passwordPolicyArray37);
+        java.lang.String str40 = defaultPasswordGenerator36.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator41 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray42 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList43 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43, passwordPolicyArray42);
+        java.lang.String str45 = defaultPasswordGenerator41.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43);
+        java.lang.String str46 = defaultPasswordGenerator36.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43);
+        java.lang.String str47 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator48 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray49 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList50 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean51 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList50, passwordPolicyArray49);
+        java.lang.String str52 = defaultPasswordGenerator48.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList50);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray53 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList54 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean55 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList54, passwordPolicyArray53);
+        java.lang.String str56 = defaultPasswordGenerator48.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList54);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator57 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray58 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList59 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59, passwordPolicyArray58);
+        java.lang.String str61 = defaultPasswordGenerator57.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59);
+        java.lang.String str62 = defaultPasswordGenerator48.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator63 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray64 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList65 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean66 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList65, passwordPolicyArray64);
+        java.lang.String str67 = defaultPasswordGenerator63.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList65);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray68 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList69 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69, passwordPolicyArray68);
+        java.lang.String str71 = defaultPasswordGenerator63.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator72 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray73 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList74 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean75 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList74, passwordPolicyArray73);
+        java.lang.String str76 = defaultPasswordGenerator72.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList74);
+        java.lang.String str77 = defaultPasswordGenerator63.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList74);
+        java.lang.String str78 = defaultPasswordGenerator48.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList74);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray79 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList80 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean81 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList80, passwordPolicyArray79);
+        java.lang.String str82 = defaultPasswordGenerator48.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList80);
+        java.lang.String str83 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList80);
+        java.lang.String str84 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList80);
+        java.lang.Class<?> wildcardClass85 = passwordPolicyList80.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "26) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "0bo42p7s" + "'", str4, "0bo42p7s");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "23) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "h3e45O0y" + "'", str8, "h3e45O0y");
+        org.junit.Assert.assertNotNull(passwordPolicyArray11);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray11, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+// flaky "19) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "Adg9U477" + "'", str14, "Adg9U477");
+        org.junit.Assert.assertNotNull(passwordPolicyArray15);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray15, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+// flaky "13) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str18 + "' != '" + "27iZ7Sv2" + "'", str18, "27iZ7Sv2");
+// flaky "11) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str19 + "' != '" + "1b0vd75M" + "'", str19, "1b0vd75M");
+// flaky "11) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str20 + "' != '" + "29VyS70x" + "'", str20, "29VyS70x");
+        org.junit.Assert.assertNotNull(passwordPolicyArray22);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray22, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+// flaky "9) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str25 + "' != '" + "LQJ6U168" + "'", str25, "LQJ6U168");
+        org.junit.Assert.assertNotNull(passwordPolicyArray26);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray26, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+// flaky "9) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str29 + "' != '" + "9w3h0oa3" + "'", str29, "9w3h0oa3");
+        org.junit.Assert.assertNotNull(passwordPolicyArray31);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray31, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+// flaky "9) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str34 + "' != '" + "3Qx44W6v" + "'", str34, "3Qx44W6v");
+// flaky "6) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str35 + "' != '" + "6v8Evx42" + "'", str35, "6v8Evx42");
+        org.junit.Assert.assertNotNull(passwordPolicyArray37);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray37, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+// flaky "5) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "X00ix9G3" + "'", str40, "X00ix9G3");
+        org.junit.Assert.assertNotNull(passwordPolicyArray42);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray42, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+// flaky "3) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str45 + "' != '" + "AR7177Wx" + "'", str45, "AR7177Wx");
+// flaky "3) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str46 + "' != '" + "r16w0c8E" + "'", str46, "r16w0c8E");
+// flaky "3) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str47 + "' != '" + "6f65T7ld" + "'", str47, "6f65T7ld");
+        org.junit.Assert.assertNotNull(passwordPolicyArray49);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray49, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str52 + "' != '" + "97k69kxE" + "'", str52, "97k69kxE");
+        org.junit.Assert.assertNotNull(passwordPolicyArray53);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray53, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + false + "'", boolean55 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str56 + "' != '" + "Y6a05G4q" + "'", str56, "Y6a05G4q");
+        org.junit.Assert.assertNotNull(passwordPolicyArray58);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray58, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str61 + "' != '" + "g9I39oW2" + "'", str61, "g9I39oW2");
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str62 + "' != '" + "06b7C4pI" + "'", str62, "06b7C4pI");
+        org.junit.Assert.assertNotNull(passwordPolicyArray64);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray64, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str67 + "' != '" + "b3n8IJ29" + "'", str67, "b3n8IJ29");
+        org.junit.Assert.assertNotNull(passwordPolicyArray68);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray68, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str71 + "' != '" + "5697rhcy" + "'", str71, "5697rhcy");
+        org.junit.Assert.assertNotNull(passwordPolicyArray73);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray73, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str76 + "' != '" + "JAf528B3" + "'", str76, "JAf528B3");
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str77 + "' != '" + "c67IN0F0" + "'", str77, "c67IN0F0");
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str78 + "' != '" + "83P15qNt" + "'", str78, "83P15qNt");
+        org.junit.Assert.assertNotNull(passwordPolicyArray79);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray79, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean81 + "' != '" + false + "'", boolean81 == false);
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str82 + "' != '" + "Tr4y644T" + "'", str82, "Tr4y644T");
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str83 + "' != '" + "4h5Ivl89" + "'", str83, "4h5Ivl89");
+// flaky "2) test030(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str84 + "' != '" + "j25dL7H4" + "'", str84, "j25dL7H4");
+        org.junit.Assert.assertNotNull(wildcardClass85);
+    }
+    @Test
+    public void test040() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test040");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray14 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList15 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean16 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15, passwordPolicyArray14);
+        java.lang.String str17 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator18 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray19 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList20 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20, passwordPolicyArray19);
+        java.lang.String str22 = defaultPasswordGenerator18.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        java.lang.String str23 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator24 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray25 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList26 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26, passwordPolicyArray25);
+        java.lang.String str28 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray29 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList30 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean31 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList30, passwordPolicyArray29);
+        java.lang.String str32 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList30);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator33 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray34 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList35 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean36 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35, passwordPolicyArray34);
+        java.lang.String str37 = defaultPasswordGenerator33.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str38 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str39 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str40 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.Class<?> wildcardClass41 = passwordPolicyList35.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "36) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "16Apf24a" + "'", str4, "16Apf24a");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "33) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "3Z12G9zq" + "'", str8, "3Z12G9zq");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "28) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "WbC635A7" + "'", str13, "WbC635A7");
+        org.junit.Assert.assertNotNull(passwordPolicyArray14);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray14, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+// flaky "22) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str17 + "' != '" + "e0873pwE" + "'", str17, "e0873pwE");
+        org.junit.Assert.assertNotNull(passwordPolicyArray19);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray19, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+// flaky "18) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str22 + "' != '" + "bp66F6B1" + "'", str22, "bp66F6B1");
+// flaky "18) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "7wb944GU" + "'", str23, "7wb944GU");
+        org.junit.Assert.assertNotNull(passwordPolicyArray25);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray25, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+// flaky "15) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str28 + "' != '" + "R23x3Hy6" + "'", str28, "R23x3Hy6");
+        org.junit.Assert.assertNotNull(passwordPolicyArray29);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray29, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+// flaky "15) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str32 + "' != '" + "5z96yW3E" + "'", str32, "5z96yW3E");
+        org.junit.Assert.assertNotNull(passwordPolicyArray34);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray34, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+// flaky "13) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str37 + "' != '" + "5z24rjW6" + "'", str37, "5z24rjW6");
+// flaky "10) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str38 + "' != '" + "iX4rS249" + "'", str38, "iX4rS249");
+// flaky "9) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str39 + "' != '" + "E44ZXz97" + "'", str39, "E44ZXz97");
+// flaky "6) test040(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "6D9M9H6e" + "'", str40, "6D9M9H6e");
+        org.junit.Assert.assertNotNull(wildcardClass41);
+    }
+
+    @Test
+    public void test050() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test050");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        java.lang.String str14 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator15 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray16 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList17 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17, passwordPolicyArray16);
+        java.lang.String str19 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator20 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray21 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList22 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean23 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList22, passwordPolicyArray21);
+        java.lang.String str24 = defaultPasswordGenerator20.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList22);
+        java.lang.String str25 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList22);
+        java.lang.String str26 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList22);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator27 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray28 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList29 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList29, passwordPolicyArray28);
+        java.lang.String str31 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList29);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray32 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList33 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean34 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList33, passwordPolicyArray32);
+        java.lang.String str35 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList33);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator36 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray37 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList38 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38, passwordPolicyArray37);
+        java.lang.String str40 = defaultPasswordGenerator36.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        java.lang.String str41 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator42 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray43 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList44 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean45 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList44, passwordPolicyArray43);
+        java.lang.String str46 = defaultPasswordGenerator42.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList44);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray47 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList48 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList48, passwordPolicyArray47);
+        java.lang.String str50 = defaultPasswordGenerator42.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList48);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator51 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray52 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList53 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53, passwordPolicyArray52);
+        java.lang.String str55 = defaultPasswordGenerator51.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        java.lang.String str56 = defaultPasswordGenerator42.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        java.lang.String str57 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray58 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList59 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean60 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59, passwordPolicyArray58);
+        java.lang.String str61 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59);
+        java.lang.String str62 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList59);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource63 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray64 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList65 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean66 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList65, realmArray64);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str67 = defaultPasswordGenerator0.generate(externalResource63, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList65);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "46) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "T7KG20f0" + "'", str4, "T7KG20f0");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "43) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "YDA4W828" + "'", str8, "YDA4W828");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "38) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "0Z4Jw7o8" + "'", str13, "0Z4Jw7o8");
+// flaky "32) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "P3c8SW14" + "'", str14, "P3c8SW14");
+        org.junit.Assert.assertNotNull(passwordPolicyArray16);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray16, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+// flaky "27) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str19 + "' != '" + "47FS9Ii1" + "'", str19, "47FS9Ii1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray21);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray21, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+// flaky "27) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str24 + "' != '" + "0ay4D88E" + "'", str24, "0ay4D88E");
+// flaky "24) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str25 + "' != '" + "M98fX68v" + "'", str25, "M98fX68v");
+// flaky "24) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str26 + "' != '" + "7V69fu7t" + "'", str26, "7V69fu7t");
+        org.junit.Assert.assertNotNull(passwordPolicyArray28);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray28, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+// flaky "22) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str31 + "' != '" + "TjG54R57" + "'", str31, "TjG54R57");
+        org.junit.Assert.assertNotNull(passwordPolicyArray32);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray32, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+// flaky "19) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str35 + "' != '" + "4NQ3bg09" + "'", str35, "4NQ3bg09");
+        org.junit.Assert.assertNotNull(passwordPolicyArray37);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray37, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+// flaky "18) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "35x4WI8v" + "'", str40, "35x4WI8v");
+// flaky "13) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str41 + "' != '" + "9762sEaS" + "'", str41, "9762sEaS");
+        org.junit.Assert.assertNotNull(passwordPolicyArray43);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray43, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
+// flaky "11) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str46 + "' != '" + "1m1T42AV" + "'", str46, "1m1T42AV");
+        org.junit.Assert.assertNotNull(passwordPolicyArray47);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray47, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+// flaky "11) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str50 + "' != '" + "2l9y46Ts" + "'", str50, "2l9y46Ts");
+        org.junit.Assert.assertNotNull(passwordPolicyArray52);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray52, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+// flaky "9) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str55 + "' != '" + "S9y68NG5" + "'", str55, "S9y68NG5");
+// flaky "8) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str56 + "' != '" + "J923FLv4" + "'", str56, "J923FLv4");
+// flaky "8) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str57 + "' != '" + "7Kb92Zy5" + "'", str57, "7Kb92Zy5");
+        org.junit.Assert.assertNotNull(passwordPolicyArray58);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray58, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + false + "'", boolean60 == false);
+// flaky "8) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str61 + "' != '" + "OXj91E03" + "'", str61, "OXj91E03");
+// flaky "8) test050(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str62 + "' != '" + "797r5SDf" + "'", str62, "797r5SDf");
+        org.junit.Assert.assertNotNull(realmArray64);
+        org.junit.Assert.assertArrayEquals(realmArray64, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
+    }
+
+    @Test
+    public void test060() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test060");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator1 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray2 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList3 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList3, passwordPolicyArray2);
+        java.lang.String str5 = defaultPasswordGenerator1.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList3);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray6 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList7 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7, passwordPolicyArray6);
+        java.lang.String str9 = defaultPasswordGenerator1.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator10 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray11 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList12 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12, passwordPolicyArray11);
+        java.lang.String str14 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray15 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList16 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16, passwordPolicyArray15);
+        java.lang.String str18 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator19 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray20 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList21 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean22 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21, passwordPolicyArray20);
+        java.lang.String str23 = defaultPasswordGenerator19.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21);
+        java.lang.String str24 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator25 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray26 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList27 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean28 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList27, passwordPolicyArray26);
+        java.lang.String str29 = defaultPasswordGenerator25.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList27);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray30 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList31 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean32 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31, passwordPolicyArray30);
+        java.lang.String str33 = defaultPasswordGenerator25.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList31);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator34 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray35 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList36 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean37 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36, passwordPolicyArray35);
+        java.lang.String str38 = defaultPasswordGenerator34.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36);
+        java.lang.String str39 = defaultPasswordGenerator25.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36);
+        java.lang.String str40 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36);
+        java.lang.String str41 = defaultPasswordGenerator1.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36);
+        java.lang.String str42 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList36);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource43 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray44 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList45 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList45, realmArray44);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str47 = defaultPasswordGenerator0.generate(externalResource43, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList45);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray2);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray2, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+// flaky "56) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str5 + "' != '" + "z04dW31W" + "'", str5, "z04dW31W");
+        org.junit.Assert.assertNotNull(passwordPolicyArray6);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray6, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+// flaky "53) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str9 + "' != '" + "63kc5o5R" + "'", str9, "63kc5o5R");
+        org.junit.Assert.assertNotNull(passwordPolicyArray11);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray11, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+// flaky "48) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "4N34Xx0j" + "'", str14, "4N34Xx0j");
+        org.junit.Assert.assertNotNull(passwordPolicyArray15);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray15, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+// flaky "42) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str18 + "' != '" + "3uW67F3l" + "'", str18, "3uW67F3l");
+        org.junit.Assert.assertNotNull(passwordPolicyArray20);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray20, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+// flaky "37) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "J08D1Ts8" + "'", str23, "J08D1Ts8");
+// flaky "36) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str24 + "' != '" + "35EX1B0z" + "'", str24, "35EX1B0z");
+        org.junit.Assert.assertNotNull(passwordPolicyArray26);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray26, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+// flaky "33) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str29 + "' != '" + "M238aN1V" + "'", str29, "M238aN1V");
+        org.junit.Assert.assertNotNull(passwordPolicyArray30);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray30, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+// flaky "33) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str33 + "' != '" + "x36fH3P1" + "'", str33, "x36fH3P1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray35);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray35, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+// flaky "31) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str38 + "' != '" + "KJ6e8y67" + "'", str38, "KJ6e8y67");
+// flaky "28) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str39 + "' != '" + "W7dw079m" + "'", str39, "W7dw079m");
+// flaky "26) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "L6Qtz828" + "'", str40, "L6Qtz828");
+// flaky "20) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str41 + "' != '" + "1d054oPl" + "'", str41, "1d054oPl");
+// flaky "17) test060(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str42 + "' != '" + "985QOT5z" + "'", str42, "985QOT5z");
+        org.junit.Assert.assertNotNull(realmArray44);
+        org.junit.Assert.assertArrayEquals(realmArray44, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
+    }
+
+    @Test
+    public void test070() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test070");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator5 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray6 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList7 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7, passwordPolicyArray6);
+        java.lang.String str9 = defaultPasswordGenerator5.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        java.lang.String str10 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator11 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray12 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList13 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList13, passwordPolicyArray12);
+        java.lang.String str15 = defaultPasswordGenerator11.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList13);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator16 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray17 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList18 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean19 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18, passwordPolicyArray17);
+        java.lang.String str20 = defaultPasswordGenerator16.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18);
+        java.lang.String str21 = defaultPasswordGenerator11.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray22 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList23 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23, passwordPolicyArray22);
+        java.lang.String str25 = defaultPasswordGenerator11.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23);
+        java.lang.String str26 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator27 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray28 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList29 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList29, passwordPolicyArray28);
+        java.lang.String str31 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList29);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator32 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray33 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList34 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean35 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList34, passwordPolicyArray33);
+        java.lang.String str36 = defaultPasswordGenerator32.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList34);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray37 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList38 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38, passwordPolicyArray37);
+        java.lang.String str40 = defaultPasswordGenerator32.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        java.lang.String str41 = defaultPasswordGenerator27.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        java.lang.String str42 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource43 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray44 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList45 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean46 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList45, realmArray44);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str47 = defaultPasswordGenerator0.generate(externalResource43, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList45);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "66) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "7O516ndH" + "'", str4, "7O516ndH");
+        org.junit.Assert.assertNotNull(passwordPolicyArray6);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray6, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+// flaky "63) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str9 + "' != '" + "9LQ243Nn" + "'", str9, "9LQ243Nn");
+// flaky "58) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str10 + "' != '" + "0Lg6Q4t9" + "'", str10, "0Lg6Q4t9");
+        org.junit.Assert.assertNotNull(passwordPolicyArray12);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray12, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+// flaky "52) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str15 + "' != '" + "67Ag5XK9" + "'", str15, "67Ag5XK9");
+        org.junit.Assert.assertNotNull(passwordPolicyArray17);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray17, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+// flaky "46) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str20 + "' != '" + "LC031x3H" + "'", str20, "LC031x3H");
+// flaky "43) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str21 + "' != '" + "0Ybg48u1" + "'", str21, "0Ybg48u1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray22);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray22, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+// flaky "40) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str25 + "' != '" + "5X8m5P4O" + "'", str25, "5X8m5P4O");
+// flaky "40) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str26 + "' != '" + "w0Ll88m2" + "'", str26, "w0Ll88m2");
+        org.junit.Assert.assertNotNull(passwordPolicyArray28);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray28, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+// flaky "37) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str31 + "' != '" + "ZX1r54G1" + "'", str31, "ZX1r54G1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray33);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray33, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
+// flaky "32) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str36 + "' != '" + "95Bk7e5N" + "'", str36, "95Bk7e5N");
+        org.junit.Assert.assertNotNull(passwordPolicyArray37);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray37, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+// flaky "28) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "ky7O8C23" + "'", str40, "ky7O8C23");
+// flaky "22) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str41 + "' != '" + "ay2S4d16" + "'", str41, "ay2S4d16");
+// flaky "19) test070(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str42 + "' != '" + "EG8H72b3" + "'", str42, "EG8H72b3");
+        org.junit.Assert.assertNotNull(realmArray44);
+        org.junit.Assert.assertArrayEquals(realmArray44, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
+    }
+
+    @Test
+    public void test080() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test080");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator10 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray11 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList12 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean13 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12, passwordPolicyArray11);
+        java.lang.String str14 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList12);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray15 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList16 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean17 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16, passwordPolicyArray15);
+        java.lang.String str18 = defaultPasswordGenerator10.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        java.lang.String str19 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        java.lang.String str20 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList16);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator21 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray22 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList23 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean24 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23, passwordPolicyArray22);
+        java.lang.String str25 = defaultPasswordGenerator21.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23);
+        java.lang.String str26 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList23);
+        org.apache.syncope.core.persistence.api.entity.ExternalResource externalResource27 = null;
+        org.apache.syncope.core.persistence.api.entity.Realm[] realmArray28 = new org.apache.syncope.core.persistence.api.entity.Realm[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm> realmList29 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.Realm>();
+        boolean boolean30 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.Realm>) realmList29, realmArray28);
+        // The following exception was thrown during execution in test generation
+        try {
+            java.lang.String str31 = defaultPasswordGenerator0.generate(externalResource27, (java.util.List<org.apache.syncope.core.persistence.api.entity.Realm>) realmList29);
+            org.junit.Assert.fail("Expected exception of type java.lang.NullPointerException; message: Cannot invoke \"org.apache.syncope.core.persistence.api.entity.ExternalResource.getPasswordPolicy()\" because \"resource\" is null");
+        } catch (java.lang.NullPointerException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "76) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "27XG5J1C" + "'", str4, "27XG5J1C");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "73) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "O7Ca77A5" + "'", str8, "O7Ca77A5");
+        org.junit.Assert.assertNotNull(passwordPolicyArray11);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray11, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+// flaky "68) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "6Cj3T12S" + "'", str14, "6Cj3T12S");
+        org.junit.Assert.assertNotNull(passwordPolicyArray15);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray15, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+// flaky "61) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str18 + "' != '" + "Ut91k04F" + "'", str18, "Ut91k04F");
+// flaky "54) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str19 + "' != '" + "F6qW2T20" + "'", str19, "F6qW2T20");
+// flaky "51) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str20 + "' != '" + "l4Q9u97o" + "'", str20, "l4Q9u97o");
+        org.junit.Assert.assertNotNull(passwordPolicyArray22);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray22, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+// flaky "48) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str25 + "' != '" + "3808XoVO" + "'", str25, "3808XoVO");
+// flaky "48) test080(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str26 + "' != '" + "a665eeD8" + "'", str26, "a665eeD8");
+        org.junit.Assert.assertNotNull(realmArray28);
+        org.junit.Assert.assertArrayEquals(realmArray28, new org.apache.syncope.core.persistence.api.entity.Realm[] {});
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+    }
+
+    @Test
+    public void test090() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test090");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        java.lang.String str14 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator15 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray16 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList17 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17, passwordPolicyArray16);
+        java.lang.String str19 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray20 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList21 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean22 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21, passwordPolicyArray20);
+        java.lang.String str23 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator24 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray25 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList26 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26, passwordPolicyArray25);
+        java.lang.String str28 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        java.lang.String str29 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        java.lang.String str30 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray31 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList32 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32, passwordPolicyArray31);
+        java.lang.String str34 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator35 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator36 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray37 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList38 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean39 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38, passwordPolicyArray37);
+        java.lang.String str40 = defaultPasswordGenerator36.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList38);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray41 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList42 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean43 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList42, passwordPolicyArray41);
+        java.lang.String str44 = defaultPasswordGenerator36.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList42);
+        java.lang.String str45 = defaultPasswordGenerator35.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList42);
+        java.lang.String str46 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList42);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator47 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray48 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList49 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean50 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList49, passwordPolicyArray48);
+        java.lang.String str51 = defaultPasswordGenerator47.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList49);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray52 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList53 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53, passwordPolicyArray52);
+        java.lang.String str55 = defaultPasswordGenerator47.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator56 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray57 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList58 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean59 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList58, passwordPolicyArray57);
+        java.lang.String str60 = defaultPasswordGenerator56.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList58);
+        java.lang.String str61 = defaultPasswordGenerator47.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList58);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator62 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray63 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList64 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean65 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList64, passwordPolicyArray63);
+        java.lang.String str66 = defaultPasswordGenerator62.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList64);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator67 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray68 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList69 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean70 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69, passwordPolicyArray68);
+        java.lang.String str71 = defaultPasswordGenerator67.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69);
+        java.lang.String str72 = defaultPasswordGenerator62.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69);
+        java.lang.String str73 = defaultPasswordGenerator47.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69);
+        java.lang.String str74 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList69);
+        java.lang.Class<?> wildcardClass75 = defaultPasswordGenerator0.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "86) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "hPGC9025" + "'", str4, "hPGC9025");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "83) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "1528rcln" + "'", str8, "1528rcln");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "78) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "1A14f4nB" + "'", str13, "1A14f4nB");
+// flaky "71) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "i5XR7b82" + "'", str14, "i5XR7b82");
+        org.junit.Assert.assertNotNull(passwordPolicyArray16);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray16, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+// flaky "63) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str19 + "' != '" + "6wz73v5P" + "'", str19, "6wz73v5P");
+        org.junit.Assert.assertNotNull(passwordPolicyArray20);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray20, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+// flaky "60) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "4B59b2FX" + "'", str23, "4B59b2FX");
+        org.junit.Assert.assertNotNull(passwordPolicyArray25);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray25, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+// flaky "57) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str28 + "' != '" + "M4h275lH" + "'", str28, "M4h275lH");
+// flaky "57) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str29 + "' != '" + "21CIc5k3" + "'", str29, "21CIc5k3");
+// flaky "52) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str30 + "' != '" + "f188CCj4" + "'", str30, "f188CCj4");
+        org.junit.Assert.assertNotNull(passwordPolicyArray31);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray31, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+// flaky "46) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str34 + "' != '" + "U1zvu705" + "'", str34, "U1zvu705");
+        org.junit.Assert.assertNotNull(passwordPolicyArray37);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray37, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+// flaky "42) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "e211axc8" + "'", str40, "e211axc8");
+        org.junit.Assert.assertNotNull(passwordPolicyArray41);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray41, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + false + "'", boolean43 == false);
+// flaky "36) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str44 + "' != '" + "oPR22U07" + "'", str44, "oPR22U07");
+// flaky "32) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str45 + "' != '" + "dkCP7236" + "'", str45, "dkCP7236");
+// flaky "29) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str46 + "' != '" + "3n4T29Vq" + "'", str46, "3n4T29Vq");
+        org.junit.Assert.assertNotNull(passwordPolicyArray48);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray48, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+// flaky "26) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str51 + "' != '" + "P8e0L7g5" + "'", str51, "P8e0L7g5");
+        org.junit.Assert.assertNotNull(passwordPolicyArray52);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray52, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+// flaky "24) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str55 + "' != '" + "2lAK165I" + "'", str55, "2lAK165I");
+        org.junit.Assert.assertNotNull(passwordPolicyArray57);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray57, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + false + "'", boolean59 == false);
+// flaky "22) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str60 + "' != '" + "13djDq00" + "'", str60, "13djDq00");
+// flaky "19) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str61 + "' != '" + "733S1ZpJ" + "'", str61, "733S1ZpJ");
+        org.junit.Assert.assertNotNull(passwordPolicyArray63);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray63, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + false + "'", boolean65 == false);
+// flaky "19) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str66 + "' != '" + "hjT5H455" + "'", str66, "hjT5H455");
+        org.junit.Assert.assertNotNull(passwordPolicyArray68);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray68, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
+// flaky "16) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str71 + "' != '" + "tB203G4l" + "'", str71, "tB203G4l");
+// flaky "16) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str72 + "' != '" + "705lZac2" + "'", str72, "705lZac2");
+// flaky "14) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str73 + "' != '" + "01ZOV6X7" + "'", str73, "01ZOV6X7");
+// flaky "14) test090(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str74 + "' != '" + "J0Xc909K" + "'", str74, "J0Xc909K");
+        org.junit.Assert.assertNotNull(wildcardClass75);
+    }
+
+    @Test
+    public void test100() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test100");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray14 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList15 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean16 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15, passwordPolicyArray14);
+        java.lang.String str17 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList15);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator18 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray19 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList20 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean21 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20, passwordPolicyArray19);
+        java.lang.String str22 = defaultPasswordGenerator18.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        java.lang.String str23 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList20);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator24 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray25 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList26 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26, passwordPolicyArray25);
+        java.lang.String str28 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray29 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList30 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean31 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList30, passwordPolicyArray29);
+        java.lang.String str32 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList30);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator33 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray34 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList35 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean36 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35, passwordPolicyArray34);
+        java.lang.String str37 = defaultPasswordGenerator33.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str38 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str39 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        java.lang.String str40 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList35);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator41 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray42 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList43 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean44 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43, passwordPolicyArray42);
+        java.lang.String str45 = defaultPasswordGenerator41.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList43);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator46 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray47 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList48 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean49 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList48, passwordPolicyArray47);
+        java.lang.String str50 = defaultPasswordGenerator46.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList48);
+        java.lang.String str51 = defaultPasswordGenerator41.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList48);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray52 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList53 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean54 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53, passwordPolicyArray52);
+        java.lang.String str55 = defaultPasswordGenerator41.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        java.lang.String str56 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList53);
+        java.lang.Class<?> wildcardClass57 = defaultPasswordGenerator0.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "96) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "J404mm6b" + "'", str4, "J404mm6b");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "93) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "R91wC8B8" + "'", str8, "R91wC8B8");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "88) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "1kn4ZF85" + "'", str13, "1kn4ZF85");
+        org.junit.Assert.assertNotNull(passwordPolicyArray14);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray14, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+// flaky "81) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str17 + "' != '" + "7D20W9IE" + "'", str17, "7D20W9IE");
+        org.junit.Assert.assertNotNull(passwordPolicyArray19);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray19, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+// flaky "72) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str22 + "' != '" + "oy10D82e" + "'", str22, "oy10D82e");
+// flaky "69) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "Fh16H80L" + "'", str23, "Fh16H80L");
+        org.junit.Assert.assertNotNull(passwordPolicyArray25);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray25, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+// flaky "66) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str28 + "' != '" + "r9f368yP" + "'", str28, "r9f368yP");
+        org.junit.Assert.assertNotNull(passwordPolicyArray29);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray29, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+// flaky "66) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str32 + "' != '" + "r3D2v70n" + "'", str32, "r3D2v70n");
+        org.junit.Assert.assertNotNull(passwordPolicyArray34);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray34, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+// flaky "59) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str37 + "' != '" + "3dO37e3K" + "'", str37, "3dO37e3K");
+// flaky "53) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str38 + "' != '" + "ATx43x32" + "'", str38, "ATx43x32");
+// flaky "49) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str39 + "' != '" + "egyq5985" + "'", str39, "egyq5985");
+// flaky "43) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str40 + "' != '" + "HW396OH4" + "'", str40, "HW396OH4");
+        org.junit.Assert.assertNotNull(passwordPolicyArray42);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray42, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+// flaky "39) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str45 + "' != '" + "BL91x63D" + "'", str45, "BL91x63D");
+        org.junit.Assert.assertNotNull(passwordPolicyArray47);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray47, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+// flaky "34) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str50 + "' != '" + "S819Or1P" + "'", str50, "S819Or1P");
+// flaky "31) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str51 + "' != '" + "O5p45z7r" + "'", str51, "O5p45z7r");
+        org.junit.Assert.assertNotNull(passwordPolicyArray52);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray52, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+// flaky "29) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str55 + "' != '" + "3kh16tA3" + "'", str55, "3kh16tA3");
+// flaky "27) test100(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str56 + "' != '" + "R596E5Ia" + "'", str56, "R596E5Ia");
+        org.junit.Assert.assertNotNull(wildcardClass57);
+    }
+
+    @Test
+    public void test110() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test110");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray1 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList2 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean3 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2, passwordPolicyArray1);
+        java.lang.String str4 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList2);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray5 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList6 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean7 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6, passwordPolicyArray5);
+        java.lang.String str8 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList6);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator9 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray10 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList11 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean12 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11, passwordPolicyArray10);
+        java.lang.String str13 = defaultPasswordGenerator9.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        java.lang.String str14 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList11);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator15 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray16 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList17 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean18 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17, passwordPolicyArray16);
+        java.lang.String str19 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList17);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray20 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList21 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean22 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21, passwordPolicyArray20);
+        java.lang.String str23 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList21);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator24 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray25 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList26 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean27 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26, passwordPolicyArray25);
+        java.lang.String str28 = defaultPasswordGenerator24.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        java.lang.String str29 = defaultPasswordGenerator15.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        java.lang.String str30 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList26);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray31 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList32 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean33 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32, passwordPolicyArray31);
+        java.lang.String str34 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList32);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator35 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray36 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList37 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean38 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList37, passwordPolicyArray36);
+        java.lang.String str39 = defaultPasswordGenerator35.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList37);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray40 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList41 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean42 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList41, passwordPolicyArray40);
+        java.lang.String str43 = defaultPasswordGenerator35.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList41);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator44 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray45 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList46 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean47 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList46, passwordPolicyArray45);
+        java.lang.String str48 = defaultPasswordGenerator44.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList46);
+        java.lang.String str49 = defaultPasswordGenerator35.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList46);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator50 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray51 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList52 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean53 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList52, passwordPolicyArray51);
+        java.lang.String str54 = defaultPasswordGenerator50.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList52);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray55 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList56 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean57 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList56, passwordPolicyArray55);
+        java.lang.String str58 = defaultPasswordGenerator50.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList56);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator59 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator60 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray61 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList62 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean63 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList62, passwordPolicyArray61);
+        java.lang.String str64 = defaultPasswordGenerator60.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList62);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray65 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList66 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean67 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66, passwordPolicyArray65);
+        java.lang.String str68 = defaultPasswordGenerator60.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66);
+        java.lang.String str69 = defaultPasswordGenerator59.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66);
+        java.lang.String str70 = defaultPasswordGenerator50.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66);
+        java.lang.String str71 = defaultPasswordGenerator35.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66);
+        java.lang.String str72 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList66);
+        java.lang.Class<?> wildcardClass73 = passwordPolicyList66.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray1);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray1, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
+// flaky "106) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "8nR3oY16" + "'", str4, "8nR3oY16");
+        org.junit.Assert.assertNotNull(passwordPolicyArray5);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray5, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+// flaky "103) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str8 + "' != '" + "9Nw3u0v6" + "'", str8, "9Nw3u0v6");
+        org.junit.Assert.assertNotNull(passwordPolicyArray10);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray10, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+// flaky "98) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str13 + "' != '" + "2z0KJ24e" + "'", str13, "2z0KJ24e");
+// flaky "91) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str14 + "' != '" + "Z41U1i3y" + "'", str14, "Z41U1i3y");
+        org.junit.Assert.assertNotNull(passwordPolicyArray16);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray16, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+// flaky "81) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str19 + "' != '" + "WYz6143h" + "'", str19, "WYz6143h");
+        org.junit.Assert.assertNotNull(passwordPolicyArray20);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray20, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+// flaky "78) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str23 + "' != '" + "4ZxGs226" + "'", str23, "4ZxGs226");
+        org.junit.Assert.assertNotNull(passwordPolicyArray25);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray25, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+// flaky "74) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str28 + "' != '" + "Jh666un5" + "'", str28, "Jh666un5");
+// flaky "74) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str29 + "' != '" + "Po4WP961" + "'", str29, "Po4WP961");
+// flaky "67) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str30 + "' != '" + "O9H6g5T0" + "'", str30, "O9H6g5T0");
+        org.junit.Assert.assertNotNull(passwordPolicyArray31);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray31, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+// flaky "61) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str34 + "' != '" + "5Dz4N22A" + "'", str34, "5Dz4N22A");
+        org.junit.Assert.assertNotNull(passwordPolicyArray36);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray36, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
+// flaky "57) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str39 + "' != '" + "eZ95X77f" + "'", str39, "eZ95X77f");
+        org.junit.Assert.assertNotNull(passwordPolicyArray40);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray40, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
+// flaky "51) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str43 + "' != '" + "Lh3I720k" + "'", str43, "Lh3I720k");
+        org.junit.Assert.assertNotNull(passwordPolicyArray45);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray45, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+// flaky "47) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str48 + "' != '" + "Bk8t245f" + "'", str48, "Bk8t245f");
+// flaky "41) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str49 + "' != '" + "8Xi5lY72" + "'", str49, "8Xi5lY72");
+        org.junit.Assert.assertNotNull(passwordPolicyArray51);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray51, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
+// flaky "38) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str54 + "' != '" + "k70Z10MW" + "'", str54, "k70Z10MW");
+        org.junit.Assert.assertNotNull(passwordPolicyArray55);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray55, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
+// flaky "36) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str58 + "' != '" + "D0p64Ws1" + "'", str58, "D0p64Ws1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray61);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray61, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
+// flaky "34) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str64 + "' != '" + "yC659u7D" + "'", str64, "yC659u7D");
+        org.junit.Assert.assertNotNull(passwordPolicyArray65);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray65, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + false + "'", boolean67 == false);
+// flaky "27) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str68 + "' != '" + "jLE657l1" + "'", str68, "jLE657l1");
+// flaky "25) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str69 + "' != '" + "6se929fh" + "'", str69, "6se929fh");
+// flaky "22) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str70 + "' != '" + "05N9YM3K" + "'", str70, "05N9YM3K");
+// flaky "22) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str71 + "' != '" + "8K3PY8a2" + "'", str71, "8K3PY8a2");
+// flaky "19) test110(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str72 + "' != '" + "U1546tjB" + "'", str72, "U1546tjB");
+        org.junit.Assert.assertNotNull(wildcardClass73);
+    }
+
+    @Test
+    public void test118() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test118");
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator0 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator1 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray2 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList3 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean4 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList3, passwordPolicyArray2);
+        java.lang.String str5 = defaultPasswordGenerator1.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList3);
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray6 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList7 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean8 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7, passwordPolicyArray6);
+        java.lang.String str9 = defaultPasswordGenerator1.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        java.lang.String str10 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList7);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator11 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray12 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList13 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean14 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList13, passwordPolicyArray12);
+        java.lang.String str15 = defaultPasswordGenerator11.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList13);
+        org.apache.syncope.core.spring.security.DefaultPasswordGenerator defaultPasswordGenerator16 = new org.apache.syncope.core.spring.security.DefaultPasswordGenerator();
+        org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] passwordPolicyArray17 = new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {};
+        java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy> passwordPolicyList18 = new java.util.ArrayList<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>();
+        boolean boolean19 = java.util.Collections.addAll((java.util.Collection<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18, passwordPolicyArray17);
+        java.lang.String str20 = defaultPasswordGenerator16.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18);
+        java.lang.String str21 = defaultPasswordGenerator11.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18);
+        java.lang.String str22 = defaultPasswordGenerator0.generate((java.util.List<org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy>) passwordPolicyList18);
+        java.lang.Class<?> wildcardClass23 = passwordPolicyList18.getClass();
+        org.junit.Assert.assertNotNull(passwordPolicyArray2);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray2, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+// flaky "114) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str5 + "' != '" + "o8o273qH" + "'", str5, "o8o273qH");
+        org.junit.Assert.assertNotNull(passwordPolicyArray6);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray6, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+// flaky "111) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str9 + "' != '" + "0P61J5sJ" + "'", str9, "0P61J5sJ");
+// flaky "106) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str10 + "' != '" + "3gP70KD1" + "'", str10, "3gP70KD1");
+        org.junit.Assert.assertNotNull(passwordPolicyArray12);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray12, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+// flaky "99) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str15 + "' != '" + "7I5Ry65V" + "'", str15, "7I5Ry65V");
+        org.junit.Assert.assertNotNull(passwordPolicyArray17);
+        org.junit.Assert.assertArrayEquals(passwordPolicyArray17, new org.apache.syncope.core.persistence.api.entity.policy.PasswordPolicy[] {});
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+// flaky "89) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str20 + "' != '" + "j115Z2hY" + "'", str20, "j115Z2hY");
+// flaky "86) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str21 + "' != '" + "1q197OXq" + "'", str21, "1q197OXq");
+// flaky "82) test118(RegressionTest0)":         org.junit.Assert.assertEquals("'" + str22 + "' != '" + "15g1wE6U" + "'", str22, "15g1wE6U");
+        org.junit.Assert.assertNotNull(wildcardClass23);
+    }
+}

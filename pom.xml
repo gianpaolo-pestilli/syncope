@@ -1570,20 +1570,13 @@ under the License.
         <enabled>true</enabled>
       </snapshots>
     </pluginRepository>
-
-    <pluginRepository>
-      <id>EvoSuite</id>
-      <name>EvoSuite Repository</name>
-      <url>http://www.evosuite.org/m2</url>
-    </pluginRepository>
   </pluginRepositories>
+
 
   <build>
     <defaultGoal>clean verify</defaultGoal>
-
     <pluginManagement>
       <plugins>
-
 
 
         <plugin>
@@ -2534,6 +2527,7 @@ under the License.
     <module>ext</module>
     <module>archetype</module>
     <module>standalone</module>
+    <module>coverage-report</module>
   </modules>
 
 
