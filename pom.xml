@@ -583,7 +583,12 @@ under the License.
 
     <dependencies>
 
-
+      <dependency>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.15.0</version>
+        <type>maven-plugin</type>
+      </dependency>
 
 
       <dependency>
