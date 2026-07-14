@@ -2461,6 +2461,7 @@ under the License.
         <modernizer.skip>true</modernizer.skip>
         <rat.skip>true</rat.skip>
         <checkstyle.skip>true</checkstyle.skip>
+        <maven.build.cache.skip>true</maven.build.cache.skip>
       </properties>
 
       <build>

@@ -1,7 +1,0 @@
-organization=gianpaolo-pestilli
-projectKey=gianpaolo-pestilli_syncope2
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.92448
-dashboardUrl=https://sonarcloud.io/dashboard?id=gianpaolo-pestilli_syncope2
-ceTaskId=AZ7nRBcvwb6nMlYZxNZu
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AZ7nRBcvwb6nMlYZxNZu

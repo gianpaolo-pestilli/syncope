@@ -1,9 +1,0 @@
-
-eorg.apache.syncope.client.console.rest.BaseRestClient#getService(Ljava/lang/Class;)Ljava/lang/Object;a
-Wclient\console\src\main\java\org\apache\syncope\client\console\rest\BaseRestClient.java+ +(%"1*!
-1, ,($"
-, ,(D
-"":+
-+& +(A
-serviceClassjava.lang.ClassB9"7
-5org.apache.syncope.client.console.rest.BaseRestClient

@@ -1,10 +1,0 @@
-
-morg.apache.syncope.client.cli.commands.user.UserSyncopeOperations#auth(Ljava/lang/String;Ljava/lang/String;)Zi
-_client\cli\src\main\java\org\apache\syncope\client\cli\commands\user\UserSyncopeOperations.java$ $("2*
-2' '("
-' '(2:(
-$ $(.
-usernamejava.lang.String:(
-$/ $(D
-passwordjava.lang.StringBEC
-Aorg.apache.syncope.client.cli.commands.user.UserSyncopeOperationsHX
