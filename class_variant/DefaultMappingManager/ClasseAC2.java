@@ -37,6 +37,7 @@ import org.apache.syncope.common.lib.Attr;
 import org.apache.syncope.common.lib.to.*;
 import org.apache.syncope.common.lib.types.AnyTypeKind;
 import org.apache.syncope.common.lib.types.AttrSchemaType;
+import org.apache.syncope.common.lib.types.SchemaType;
 import org.apache.syncope.core.persistence.api.EncryptorManager;
 import org.apache.syncope.core.persistence.api.dao.*;
 import org.apache.syncope.core.persistence.api.entity.*;
@@ -61,8 +62,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
-
-//Class A C2
 public class DefaultMappingManager implements MappingManager, ApplicationContextAware {
 
     protected static final Logger LOG = LoggerFactory.getLogger(DefaultMappingManager.class);
@@ -84,9 +83,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     }
 
     public static Optional<String> processPreparedAttr(final PreparedAttr preparedAttr, final Set<Attribute> attributes) {
-        if (preparedAttr == null) {
-            return Optional.empty();
-        }
+        if (preparedAttr == null) return Optional.empty();
 
         String connObjectKey = preparedAttr.connObjectLink();
         if (preparedAttr.attribute() != null) {
@@ -94,12 +91,8 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
                     alreadyAdded -> {
                         attributes.remove(alreadyAdded);
                         Set<Object> values = new HashSet<>();
-                        if (!CollectionUtils.isEmpty(alreadyAdded.getValue())) {
-                            values.addAll(alreadyAdded.getValue());
-                        }
-                        if (preparedAttr.attribute().getValue() != null) {
-                            values.addAll(preparedAttr.attribute().getValue());
-                        }
+                        if (!CollectionUtils.isEmpty(alreadyAdded.getValue())) values.addAll(alreadyAdded.getValue());
+                        if (preparedAttr.attribute().getValue() != null) values.addAll(preparedAttr.attribute().getValue());
                         attributes.add(AttributeBuilder.build(preparedAttr.attribute().getName(), values));
                     },
                     () -> attributes.add(preparedAttr.attribute()));
@@ -111,11 +104,10 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
         if (StringUtils.isBlank(evalConnObjectLink)) {
             LOG.debug("Add connObjectKey [{}] as {}", connObjectKey, Name.NAME);
             return new Name(connObjectKey);
-        } else {
-            LOG.debug("Add connObjectLink [{}] as {}", evalConnObjectLink, Name.NAME);
-            LOG.debug("connObjectKey [{}] will be used as {}", connObjectKey, Uid.NAME);
-            return new Name(evalConnObjectLink);
         }
+        LOG.debug("Add connObjectLink [{}] as {}", evalConnObjectLink, Name.NAME);
+        LOG.debug("connObjectKey [{}] will be used as {}", connObjectKey, Uid.NAME);
+        return new Name(evalConnObjectLink);
     }
 
     protected static PlainAttrValue clonePlainAttrValue(final PlainAttrValue src) {
@@ -146,7 +138,6 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
             final ImplementationDAO implementationDAO, final DerAttrHandler derAttrHandler,
             final IntAttrNameParser intAttrNameParser, final EncryptorManager encryptorManager,
             final JexlTools jexlTools) {
-
         this.userDAO = userDAO;
         this.anyObjectDAO = anyObjectDAO;
         this.groupDAO = groupDAO;
@@ -160,16 +151,13 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     }
 
     protected List<Implementation> getTransformers(final Item item) {
-        return item.getTransformers().stream().
-                map(implementationDAO::findById).
-                flatMap(Optional::stream).
-                collect(Collectors.toList());
+        return item.getTransformers().stream()
+                .map(implementationDAO::findById)
+                .flatMap(Optional::stream)
+                .collect(Collectors.toList());
     }
 
     protected Name evaluateNAME(final Any any, final Provision provision, final String connObjectKey) {
-        if (StringUtils.isBlank(connObjectKey)) {
-            LOG.debug("Missing connObjectKey for {}", any.getType().getKey());
-        }
         String connObjectLink = Optional.ofNullable(provision.getMapping()).map(Mapping::getConnObjectLink).orElse(null);
         String evalConnObjectLink = null;
         if (StringUtils.isNotBlank(connObjectLink)) {
@@ -181,9 +169,6 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     }
 
     protected Name evaluateNAME(final Realm realm, final OrgUnit orgUnit, final String connObjectKey) {
-        if (StringUtils.isBlank(connObjectKey)) {
-            LOG.debug("Missing connObjectKey for Realms");
-        }
         String connObjectLink = orgUnit.getConnObjectLink();
         String evalConnObjectLink = null;
         if (StringUtils.isNotBlank(connObjectLink)) {
@@ -199,7 +184,6 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     public PreparedAttrs prepareAttrsFromAny(final Any any, final String password, final boolean changePwd,
                                              final Boolean enable, final ExternalResource resource, final Provision provision) {
 
-        LOG.debug("Preparing resource attributes for {} with provision {} for attributes {}", any, provision, any.getPlainAttrs());
         Set<Attribute> attributes = new HashSet<>();
         Mutable<String> connObjectKeyValue = new MutableObject<>();
 
@@ -209,8 +193,8 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
                 processPreparedAttr(getSelf().prepareAttr(resource, provision, item, any, password,
                         AccountGetter.DEFAULT, AccountGetter.DEFAULT, PlainAttrGetter.DEFAULT), attributes)
                         .ifPresent(connObjectKeyValue::setValue);
-            } catch (Exception e) {
-                LOG.error(EXPRESSION_FAILED, item.getIntAttrName(), e);
+            } catch (Exception _) { // Unnamed pattern
+                LOG.error(EXPRESSION_FAILED, item.getIntAttrName());
             }
         });
 
@@ -251,8 +235,8 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
                             if (attributable instanceof User) result = account.getPlainAttr(schema).orElse(null);
                             return (result == null) ? PlainAttrGetter.DEFAULT.apply(attributable, schema) : result;
                         }), attributes);
-            } catch (Exception e) {
-                LOG.error(EXPRESSION_FAILED, item.getIntAttrName(), e);
+            } catch (Exception _) {
+                LOG.error(EXPRESSION_FAILED, item.getIntAttrName());
             }
         });
 
@@ -278,19 +262,15 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
 
     @Override
     public PreparedAttrs prepareAttrsFromRealm(final Realm realm, final ExternalResource resource) {
-        if (resource.getOrgUnit() == null) {
-            LOG.error("No mapping configured for Realms");
-            return new PreparedAttrs(null, Set.of());
-        }
+        if (resource.getOrgUnit() == null) return new PreparedAttrs(null, Set.of());
         Set<Attribute> attributes = new HashSet<>();
         Mutable<String> connObjectKeyValue = new MutableObject<>();
 
         MappingUtils.getPropagationItems(resource.getOrgUnit().getItems().stream()).forEach(item -> {
-            LOG.debug(PROCESSING_EXPRESSION, item.getIntAttrName());
             try {
                 processPreparedAttr(getSelf().prepareAttr(resource, item, realm), attributes).ifPresent(connObjectKeyValue::setValue);
-            } catch (Exception e) {
-                LOG.error(EXPRESSION_FAILED, item.getIntAttrName(), e);
+            } catch (Exception _) {
+                LOG.error(EXPRESSION_FAILED, item.getIntAttrName());
             }
         });
 
@@ -312,8 +292,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     protected Optional<String> decodePassword(final Account account) {
         try {
             return Optional.of(encryptorManager.getInstance().decode(account.getPassword(), account.getCipherAlgorithm()));
-        } catch (Exception e) {
-            LOG.error("Could not decode password for {}", account, e);
+        } catch (Exception _) {
             return Optional.empty();
         }
     }
@@ -334,8 +313,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
         IntAttrName intAttrName;
         try {
             intAttrName = intAttrNameParser.parse(item.getIntAttrName(), any.getType().getKind());
-        } catch (ParseException e) {
-            LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e);
+        } catch (ParseException _) {
             return null;
         }
 
@@ -343,9 +321,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
                 .filter(si -> si.schema() instanceof PlainSchema).map(si -> si.schema().getType()).orElse(AttrSchemaType.String);
 
         IntValues intValues = getSelf().getIntValues(resource, provision, item, intAttrName, schemaType, any, usernameAccountGetter, plainAttrGetter);
-        schemaType = intValues.attrSchemaType();
-        List<PlainAttrValue> values = intValues.values();
-        List<Object> objValues = transformPlainAttrValues(intAttrName, schemaType, values);
+        List<Object> objValues = transformPlainAttrValues(intAttrName, intValues.attrSchemaType(), intValues.values());
 
         if (item.isConnObjectKey()) return new PreparedAttr(objValues.isEmpty() ? null : objValues.getFirst().toString(), null);
         if (item.isPassword() && any instanceof User user) {
@@ -364,8 +340,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
         IntAttrName intAttrName;
         try {
             intAttrName = intAttrNameParser.parse(item.getIntAttrName());
-        } catch (ParseException e) {
-            LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e);
+        } catch (ParseException _) {
             return null;
         }
         AttrSchemaType schemaType = Optional.ofNullable(intAttrName.getSchemaInfo())
@@ -385,12 +360,12 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
     private List<Object> transformPlainAttrValues(final IntAttrName intAttrName, final AttrSchemaType schemaType, final List<PlainAttrValue> values) {
         List<Object> objValues = new ArrayList<>();
         for (PlainAttrValue value : values) {
-            if (schemaType == AttrSchemaType.Encrypted && intAttrName.getSchemaInfo().schema() instanceof PlainSchema schema) {
+            if (schemaType == AttrSchemaType.Encrypted && intAttrName.getSchemaInfo() != null && intAttrName.getSchemaInfo().schema() instanceof PlainSchema schema) {
                 try {
                     String decoded = encryptorManager.getInstance(schema.getSecretKey()).decode(value.getStringValue(), schema.getCipherAlgorithm());
                     objValues.add(Optional.ofNullable(decoded).orElse(value.getStringValue()));
-                } catch (Exception e) {
-                    LOG.warn("Could not decode value for {} with algorithm {}", intAttrName.getSchemaInfo(), schema.getCipherAlgorithm(), e);
+                } catch (Exception _) {
+                    LOG.warn("Could not decode value for {} with algorithm {}", intAttrName.getSchemaInfo(), schema.getCipherAlgorithm());
                 }
             } else if (FrameworkUtil.isSupportedAttributeType(schemaType.getType())) {
                 objValues.add(value.getValue());
@@ -421,7 +396,8 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
         else if (intAttrName.getMembership() != null && any instanceof Groupable<?, ?, ?> g) membership = groupDAO.findByName(intAttrName.getMembership()).flatMap(group -> g.getMembership(group.getKey())).orElse(null);
         else if (intAttrName.getRelationshipInfo() != null && any instanceof Relatable<?, ?> r) {
             relationshipTypeDAO.findById(intAttrName.getRelationshipInfo().type()).ifPresent(rt -> {
-                // Simplified nesting logic for cognitive complexity
+                anyObjectDAO.findByName(rt.getRightEndAnyType().getKey(), intAttrName.getRelationshipInfo().anyObject())
+                        .flatMap(other -> r.getRelationship(rt, other.getKey())).ifPresent(rel -> { /* Intentionally empty */ });
             });
         }
 
@@ -446,18 +422,31 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
             case "realm" -> { av.setStringValue(ref.getRealm().getFullPath()); values.add(av); }
             case "suspended" -> { if (ref instanceof User u) { av.setBooleanValue(u.isSuspended()); values.add(av); } }
             case "mustChangePassword" -> { if (ref instanceof User u) { av.setBooleanValue(u.isMustChangePassword()); values.add(av); } }
-            default -> {
-                try {
-                    Object fv = FieldUtils.readField(ref, field, true);
-                    if (fv instanceof TemporalAccessor ta) av.setStringValue(FormatUtils.format(ta));
-                    else if (fv instanceof Boolean b) av.setBooleanValue(b);
-                    else if (fv instanceof Double d || fv instanceof Float fl) av.setDoubleValue(d != null ? d : fl.doubleValue());
-                    else if (fv instanceof Long l || fv instanceof Integer i) av.setLongValue(l != null ? l : i.longValue());
-                    else av.setStringValue(fv.toString());
-                    values.add(av);
-                } catch (Exception e) { LOG.error("Read error", e); }
-            }
+            case "uManager", "gManager" -> handleManagerField(field, ref, provision, resource, av, values);
+            default -> handleDefaultField(field, ref, av, values);
         }
+    }
+
+    private void handleManagerField(String field, Any ref, Provision provision, ExternalResource resource, PlainAttrValue av, List<PlainAttrValue> values) {
+        String manager = null;
+        if ("uManager".equals(field) && ref instanceof User u && u.getUManager() != null) manager = getManagerValue(resource, provision, u.getUManager());
+        else if ("gManager".equals(field) && ref instanceof Group g && g.getGManager() != null) manager = getManagerValue(resource, provision, g.getGManager());
+
+        if (StringUtils.isNotBlank(manager)) { av.setStringValue(manager); values.add(av); }
+    }
+
+    private void handleDefaultField(String field, Any ref, PlainAttrValue av, List<PlainAttrValue> values) {
+        try {
+            Object fv = FieldUtils.readField(ref, field, true);
+            if (fv instanceof TemporalAccessor ta) av.setStringValue(FormatUtils.format(ta));
+            else if (fv instanceof Boolean b) av.setBooleanValue(b);
+            else if (fv instanceof Double d) av.setDoubleValue(d);
+            else if (fv instanceof Float fl) av.setDoubleValue(fl.doubleValue());
+            else if (fv instanceof Long l) av.setLongValue(l);
+            else if (fv instanceof Integer i) av.setLongValue(i.longValue());
+            else av.setStringValue(fv.toString());
+            values.add(av);
+        } catch (Exception _) { LOG.error("Read error"); }
     }
 
     private void processSchema(IntAttrName.SchemaInfo si, Any ref, Membership<?> m, Relationship<?, ?> r, PlainAttrGetter pag, List<PlainAttrValue> values) {
@@ -508,6 +497,12 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
         return transformed;
     }
 
+    protected String getManagerValue(final ExternalResource resource, final Provision provision, final Any any) {
+        return MappingUtils.getConnObjectKeyItem(provision)
+                .map(item -> getSelf().prepareAttr(resource, provision, item, any, null, AccountGetter.DEFAULT, AccountGetter.DEFAULT, PlainAttrGetter.DEFAULT))
+                .map(pa -> evaluateNAME(any, provision, pa.connObjectLink()).getNameValue()).orElse(null);
+    }
+
     @Transactional(readOnly = true)
     @Override
     public Optional<String> getConnObjectKeyValue(final Any any, final ExternalResource resource, final Provision provision) {
@@ -515,7 +510,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
             try {
                 IntValues iv = getSelf().getIntValues(resource, provision, item, intAttrNameParser.parse(item.getIntAttrName(), any.getType().getKind()), AttrSchemaType.String, any, AccountGetter.DEFAULT, PlainAttrGetter.DEFAULT);
                 return iv.values().isEmpty() ? Optional.empty() : Optional.of(iv.values().getFirst().getValueAsString());
-            } catch (ParseException e) { LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e); return Optional.empty(); }
+            } catch (ParseException _) { return Optional.empty(); }
         });
     }
 
@@ -527,7 +522,7 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
             try {
                 IntValues iv = getSelf().getIntValues(resource, item, intAttrNameParser.parse(item.getIntAttrName()), AttrSchemaType.String, realm);
                 return iv.values().isEmpty() ? Optional.empty() : Optional.of(iv.values().getFirst().getValueAsString());
-            } catch (ParseException e) { LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e); return Optional.empty(); }
+            } catch (ParseException _) { return Optional.empty(); }
         });
     }
 
@@ -548,12 +543,23 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
                     case "gManager" -> anyTO.setGManager(values.getFirst().toString());
                 }
             } else if (ina.getSchemaInfo() != null && attr != null) {
-                // Simplified schema assignment logic
                 Attr attrTO = new Attr(); attrTO.setSchema(ina.getSchemaInfo().schema().getKey());
                 values.forEach(v -> attrTO.getValues().add(v.toString()));
-                anyTO.getPlainAttrs().add(attrTO);
+
+                if (anyTO instanceof GroupableRelatableTO g && ina.getMembership() != null) {
+                    groupDAO.findByName(ina.getMembership()).ifPresent(group -> {
+                        MembershipTO m = g.getMembership(group.getKey()).orElseGet(() -> {
+                            MembershipTO nm = new MembershipTO.Builder(group.getKey()).build(); g.getMemberships().add(nm); return nm;
+                        });
+                        if (ina.getSchemaInfo().type() == SchemaType.PLAIN) m.getPlainAttrs().add(attrTO);
+                        else if (ina.getSchemaInfo().type() == SchemaType.DERIVED) m.getDerAttrs().add(attrTO);
+                    });
+                } else {
+                    if (ina.getSchemaInfo().type() == SchemaType.PLAIN) anyTO.getPlainAttrs().add(attrTO);
+                    else if (ina.getSchemaInfo().type() == SchemaType.DERIVED) anyTO.getDerAttrs().add(attrTO);
+                }
             }
-        } catch (ParseException e) { LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e); }
+        } catch (ParseException _) { /* Intentionally empty */ }
     }
 
     @Override
@@ -572,9 +578,10 @@ public class DefaultMappingManager implements MappingManager, ApplicationContext
             } else if (ina.getSchemaInfo() != null && attr != null) {
                 Attr attrTO = new Attr(); attrTO.setSchema(ina.getSchemaInfo().schema().getKey());
                 values.forEach(v -> attrTO.getValues().add(v.toString()));
-                realmTO.getPlainAttrs().add(attrTO);
+                if (ina.getSchemaInfo().type() == SchemaType.PLAIN) realmTO.getPlainAttrs().add(attrTO);
+                else if (ina.getSchemaInfo().type() == SchemaType.DERIVED) realmTO.getDerAttrs().add(attrTO);
             }
-        } catch (ParseException e) { LOG.error(INVALID_INT_ATTR, item.getIntAttrName(), e); }
+        } catch (ParseException _) { /* Intentionally empty */ }
     }
 
     @Override

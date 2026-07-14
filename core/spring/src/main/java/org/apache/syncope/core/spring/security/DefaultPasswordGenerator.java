@@ -77,9 +77,9 @@ public class DefaultPasswordGenerator implements PasswordGenerator {
         for (Implementation impl : policy.getRules()) {
             try {
                 ImplementationManager.buildPasswordRule(
-                        impl,
-                        () -> perContextPasswordRules.get(impl.getKey()),
-                        instance -> perContextPasswordRules.put(impl.getKey(), instance)).
+                                impl,
+                                () -> perContextPasswordRules.get(impl.getKey()),
+                                instance -> perContextPasswordRules.put(impl.getKey(), instance)).
                         ifPresent(result::add);
             } catch (Exception e) {
                 LOG.warn("While building {}", impl, e);
