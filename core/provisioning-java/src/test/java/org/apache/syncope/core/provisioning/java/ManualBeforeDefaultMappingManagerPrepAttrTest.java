@@ -44,7 +44,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
     @InjectMocks
     private DefaultMappingManager mappingManager;
 
-    // --- DIPENDENZE DEL COSTRUTTORE (Tutte mockate per evitare NPE nascosti) ---
     @Mock private ImplementationDAO implementationDAO;
     @Mock private UserDAO userDAO;
     @Mock private AnyObjectDAO anyObjectDAO;
@@ -56,7 +55,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
     @Mock private JexlTools jexlTools;
     @Mock private IntAttrNameParser intAttrNameParser;
 
-    // --- OGGETTI DEL DOMINIO DA MOCKARE ---
     @Mock private IntAttrName intAttrName;
     @Mock private IntAttrName.SchemaInfo schemaInfo;
     @Mock private PlainSchema plainSchema;
@@ -70,19 +68,18 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        // --- Setup catena di mocking vitale ---
 
-        // 1. Any chain
+
+
         when(any.getType()).thenReturn(anyType);
         when(anyType.getKind()).thenReturn(AnyTypeKind.USER);
 
-        // 2. Item & Parser chain
+
         when(item.getIntAttrName()).thenReturn("dummyField");
         when(item.getExtAttrName()).thenReturn("extName");
-        when(item.getTransformers()).thenReturn(List.of()); // <-- FIX FONDAMENTALE: Previene NPE nello stream
+        when(item.getTransformers()).thenReturn(List.of());
         when(intAttrNameParser.parse(anyString(), any(AnyTypeKind.class))).thenReturn(intAttrName);
 
-        // 3. Schema chain
         when(intAttrName.getSchemaInfo()).thenReturn(schemaInfo);
         when(schemaInfo.type()).thenReturn(SchemaType.PLAIN);
         when(schemaInfo.schema()).thenReturn(plainSchema);
@@ -90,7 +87,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
         when(plainSchema.getType()).thenReturn(AttrSchemaType.String);
     }
 
-    // --- GRUPPO 1: VALIDAZIONE INPUT ANY ---
     @Test
     public void TC01_Any_Null() {
         assertThrows(NullPointerException.class, () ->
@@ -118,7 +114,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
         assertEquals("extName", res.attribute().getName());
     }
 
-    // --- GRUPPO 2: VALIDAZIONE ITEM ---
     @Test
     public void TC05_Item_Null() {
         assertThrows(NullPointerException.class, () ->
@@ -134,7 +129,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
 
     @Test
     public void TC07_Item_WithTransformers() {
-        // Mocking list con 1 transformer valido testato in isolamento
         when(item.getTransformers()).thenReturn(List.of("T1"));
         PreparedAttr res = mappingManager.prepareAttr(resource, provision, item, any, "pwd", accGetter, accGetter, attrGetter);
         assertEquals("extName", res.attribute().getName());
@@ -144,11 +138,9 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
     public void TC08_Item_ConnObjectKey() {
         when(item.isConnObjectKey()).thenReturn(true);
         PreparedAttr res = mappingManager.prepareAttr(resource, provision, item, any, "pwd", accGetter, accGetter, attrGetter);
-        // Se è ConnObjectKey senza valori, setta la chiave a null nel field attributes
         assertNull(res.attribute());
     }
 
-    // --- GRUPPO 3: VALIDAZIONE RISORSA/PROVISION ---
     @Test
     public void TC09_Resource_Null() {
         PreparedAttr res = mappingManager.prepareAttr(null, provision, item, any, "pwd", accGetter, accGetter, attrGetter);
@@ -173,7 +165,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
         assertEquals("extName", res.attribute().getName());
     }
 
-    // --- GRUPPO 4: VALIDAZIONE GETTER ---
     @Test
     public void TC13_Getter_UsernameFail() {
         when(item.getExtAttrName()).thenReturn("uFail");
@@ -202,7 +193,6 @@ public class ManualBeforeDefaultMappingManagerPrepAttrTest {
         assertEquals("validGetter", res.attribute().getName());
     }
 
-    // --- GRUPPO 5: VALIDAZIONE PASSWORD STRING ---
     @Test
     public void TC17_Pass_Null() {
         when(item.getExtAttrName()).thenReturn("passNull");

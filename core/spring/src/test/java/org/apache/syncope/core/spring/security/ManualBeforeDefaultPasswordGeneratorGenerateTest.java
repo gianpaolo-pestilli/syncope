@@ -29,52 +29,38 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
         generator = new DefaultPasswordGenerator();
     }
 
-    // --- HELPER METODO ---
-    // Crea un mock di Implementation sicuro contro le NullPointerException interne
+
     private Implementation createMockImpl(String key) {
         Implementation impl = mock(Implementation.class);
         lenient().when(impl.getKey()).thenReturn(key);
         return impl;
     }
 
-    // =========================================================================
-    // CATEGORIA 1: Input (Lista di PasswordPolicy) & Stato (Null / Vuota)
-    // =========================================================================
 
     @Test
     void testGenerate_Input_NullList() {
-        // Partizioni: Input = Null
-        // Il cast serve per disambiguare gli overload del metodo generate
         assertThrows(NullPointerException.class, () -> generator.generate((List<PasswordPolicy>) null));
     }
 
     @Test
     void testGenerate_Input_EmptyList() {
-        // Partizioni: Input = Vuota, Nessuna regola
-        // Un input vuoto produce un DefaultPasswordRuleConf di default (minLength = 8)
+
         String result = generator.generate(Collections.emptyList());
 
         assertNotNull(result);
         assertTrue(result.length() >= 8, "La password generata da una lista vuota deve usare i valori minimi di default (8)");
     }
 
-    // =========================================================================
-    // CATEGORIA 2: Stato di PasswordPolicy (Null, Nessuna Regola)
-    // =========================================================================
 
     @Test
     void testGenerate_PolicyState_NullPolicy() {
-        // Partizioni: Input = Con almeno un elemento, Stato = Null
         List<PasswordPolicy> policies = new ArrayList<>();
         policies.add(null);
-
-        // Passare una policy nulla in una lista causa NullPointerException nel forEach
         assertThrows(NullPointerException.class, () -> generator.generate(policies));
     }
 
     @Test
     void testGenerate_PolicyState_NoRulesInside() {
-        // Partizioni: Input = Con almeno un elemento, Stato = Con nessuna regola interna
         PasswordPolicy policy = mock(PasswordPolicy.class);
         doReturn(Collections.emptyList()).when(policy).getRules();
 
@@ -84,19 +70,16 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
         assertTrue(result.length() >= 8, "Nessuna regola comporta l'applicazione dei default (minimo 8)");
     }
 
-    // =========================================================================
-    // CATEGORIA 3: Numero e Validità delle regole (1 o più elementi/regole, lecite/malformate)
-    // =========================================================================
 
     @Test
     void testGenerate_Rules_OneElement_OneValidRule() {
-        // Partizioni: Input = 1 elemento, Stato = 1 regola, Validità = Lecita
+
         Implementation impl = createMockImpl("rule1");
         PasswordPolicy policy = mock(PasswordPolicy.class);
         doReturn(List.of(impl)).when(policy).getRules();
 
         DefaultPasswordRuleConf conf = new DefaultPasswordRuleConf();
-        conf.setMinLength(12); // Imponiamo un vincolo specifico
+        conf.setMinLength(12);
 
         PasswordRule rule = mock(PasswordRule.class);
         when(rule.getConf()).thenReturn(conf);
@@ -114,7 +97,7 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
 
     @Test
     void testGenerate_Rules_OneElement_TwoValidRules() {
-        // Partizioni: Input = 1 elemento, Stato = 2 regole interne, Validità = Tutte lecite
+
         Implementation impl1 = createMockImpl("rule1");
         Implementation impl2 = createMockImpl("rule2");
         PasswordPolicy policy = mock(PasswordPolicy.class);
@@ -145,7 +128,7 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
 
     @Test
     void testGenerate_Rules_TwoElements_ValidRules() {
-        // Partizioni: Input = Con almeno due elementi (policy), Validità = Tutte lecite
+
         Implementation impl1 = createMockImpl("rule1");
         PasswordPolicy policy1 = mock(PasswordPolicy.class);
         doReturn(List.of(impl1)).when(policy1).getRules();
@@ -179,21 +162,19 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
 
     @Test
     void testGenerate_Rules_OneElement_MalformedRule() {
-        // Partizioni: Validità = Presenta almeno una regola malformata
-        // Una regola è malformata se, ad esempio, non è di tipo DefaultPasswordRuleConf.
+
         Implementation impl1 = createMockImpl("valid_rule");
         Implementation impl2 = createMockImpl("malformed_rule");
 
         PasswordPolicy policy = mock(PasswordPolicy.class);
         doReturn(List.of(impl1, impl2)).when(policy).getRules();
 
-        // 1. Regola Lecita
+
         DefaultPasswordRuleConf conf1 = new DefaultPasswordRuleConf();
         conf1.setMinLength(14);
         PasswordRule rule1 = mock(PasswordRule.class);
         when(rule1.getConf()).thenReturn(conf1);
 
-        // 2. Regola Malformata (l'oggetto Conf NON è DefaultPasswordRuleConf)
         PasswordRule rule2 = mock(PasswordRule.class);
         when(rule2.getConf()).thenReturn(null); // Simula una configurazione errata/esterna
 
@@ -206,8 +187,6 @@ public class ManualBeforeDefaultPasswordGeneratorGenerateTest {
             String result = generator.generate(List.of(policy));
 
             assertNotNull(result);
-            // La regola malformata viene ignorata dal filter(rule -> rule.getConf() instanceof DefaultPasswordRuleConf)
-            // L'unica regola applicata deve essere quella lecita (minLength 14)
             assertTrue(result.length() >= 14, "La regola malformata deve essere ignorata e la password deve seguire la regola lecita");
         }
     }

@@ -150,7 +150,6 @@ under the License.
         </dependencies>
         <configuration>
           <timestampedReports>true</timestampedReports>
-          <!-- Usa le variabili per puntare alle classi corrette del modulo provisioning -->
           <targetClasses>
             <param>${pit.targetClasses}</param>
           </targetClasses>

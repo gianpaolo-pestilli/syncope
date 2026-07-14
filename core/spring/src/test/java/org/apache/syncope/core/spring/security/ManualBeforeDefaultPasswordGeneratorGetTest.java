@@ -24,11 +24,9 @@ public class ManualBeforeDefaultPasswordGeneratorGetTest {
     @BeforeEach
     void setUp() {
         generator = new DefaultPasswordGenerator();
-        // Inizializzazione manuale dei mock per sicurezza assoluta
         impl1 = mock(Implementation.class);
         impl2 = mock(Implementation.class);
 
-        // Stub fondamentali per evitare NullPointerException
         when(impl1.getKey()).thenReturn("rule1");
         when(impl2.getKey()).thenReturn("rule2");
     }
@@ -41,7 +39,6 @@ public class ManualBeforeDefaultPasswordGeneratorGetTest {
     @Test
     void testGetPasswordRules_ZeroRules() {
         PasswordPolicy policy = mock(PasswordPolicy.class);
-        // Uso doReturn per bypassare il controllo dei tipi di thenReturn
         doReturn(Collections.emptyList()).when(policy).getRules();
 
         List<PasswordRule> result = generator.getPasswordRules(policy);

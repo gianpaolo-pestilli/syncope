@@ -15,9 +15,6 @@ public class ManualAfterAllDefaultPasswordGeneratorTest {
         generator = new DefaultPasswordGenerator();
     }
 
-    // =======================================================================
-    // 1. TEST DEI DEFAULT (Linee 105-107, 162-164)
-    // =======================================================================
 
     @Test
     void testMerge_EmptyList_MinLengthIsEight() {
@@ -37,9 +34,6 @@ public class ManualAfterAllDefaultPasswordGeneratorTest {
         assertTrue(result.isUsernameAllowed());
     }
 
-    // =======================================================================
-    // 2. LOGICA NUMERICA: AGGIORNAMENTI (Il ramo TRUE dell'if)
-    // =======================================================================
 
     @Test
     void testMerge_MinLength_UpdatesWhenHigher() {
@@ -105,11 +99,6 @@ public class ManualAfterAllDefaultPasswordGeneratorTest {
         assertEquals(3, result.getRepeatSame());
     }
 
-    // =======================================================================
-    // 3. MUTATION KILLERS: NESSUN AGGIORNAMENTO (Il ramo FALSE dell'if)
-    // Questi metodi distruggono i mutanti che alterano '>' in '>='
-    // =======================================================================
-
     @Test
     void testMerge_MinLength_KeepsWhenEqual() {
         DefaultPasswordRuleConf r1 = new DefaultPasswordRuleConf(); r1.setMinLength(10);
@@ -166,9 +155,6 @@ public class ManualAfterAllDefaultPasswordGeneratorTest {
         assertEquals(3, result.getRepeatSame());
     }
 
-    // =======================================================================
-    // 4. TEST SULLE COLLEZIONI E I FILTRI (Linee 138-159)
-    // =======================================================================
 
     @Test
     void testMerge_SpecialChars_FiltersDuplicates() {
@@ -197,10 +183,6 @@ public class ManualAfterAllDefaultPasswordGeneratorTest {
         assertTrue(result.getWordsNotPermitted().contains("admin"));
     }
 
-
-    // =======================================================================
-    // 6. LOGICA DI FALLBACK E CORREZIONE (Linee 162-167)
-    // =======================================================================
 
     @Test
     void testMerge_MinLengthZero_FallbackToDefaultMax() {

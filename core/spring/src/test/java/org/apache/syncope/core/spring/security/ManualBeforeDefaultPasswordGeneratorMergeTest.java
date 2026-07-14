@@ -26,9 +26,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         this.generator = new DefaultPasswordGenerator();
     }
 
-    // =========================================================================
-    // PARTIZIONI LISTA IN INPUT
-    // =========================================================================
 
     @Test
     public void testMergeNullList() {
@@ -83,9 +80,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(exceptionThrown);
     }
 
-    // =========================================================================
-    // PARTIZIONI ATTRIBUTI NUMERICI: VALORI NEGATIVI (Inammissibili)
-    // =========================================================================
 
     @Test public void testMinLengthNegative() {
         DefaultPasswordRuleConf mockRule = mock(DefaultPasswordRuleConf.class);
@@ -151,10 +145,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // PARTIZIONI ATTRIBUTI NUMERICI: ZERO
-    // =========================================================================
-
     @Test public void testMinLengthZero() {
         DefaultPasswordRuleConf mockRule = mock(DefaultPasswordRuleConf.class);
         when(mockRule.getMinLength()).thenReturn(0);
@@ -219,9 +209,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // PARTIZIONI ATTRIBUTI NUMERICI: UNO
-    // =========================================================================
 
     @Test public void testMinLengthOne() {
         DefaultPasswordRuleConf mockRule = mock(DefaultPasswordRuleConf.class);
@@ -287,9 +274,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // PARTIZIONI ATTRIBUTI NUMERICI: MAGGIORE DI UNO
-    // =========================================================================
 
     @Test public void testMinLengthGreaterThanOne() {
         DefaultPasswordRuleConf mockRule = mock(DefaultPasswordRuleConf.class);
@@ -303,7 +287,7 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         DefaultPasswordRuleConf mockRule = mock(DefaultPasswordRuleConf.class);
         when(mockRule.getMaxLength()).thenReturn(20);
         DefaultPasswordRuleConf result = this.generator.merge(List.of(mockRule));
-        boolean condition = (result.getMaxLength() <= 20) || (result.getMaxLength() >= 0); // Black box conservativo
+        boolean condition = (result.getMaxLength() <= 20) || (result.getMaxLength() >= 0);
         assertTrue(condition);
     }
 
@@ -355,9 +339,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // PARTIZIONI INCONSISTENZE LOGICHE E SEMANTICHE
-    // =========================================================================
     @Disabled
     @Test
     public void testMergeInconsistentRuleThrowsException() {
@@ -415,17 +396,15 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
 
     @Test
     public void testSpecialCharacterPermittedAndProhibited() {
-        // Setup Mocks: A richiede il carattere, B lo proibisce
+
         DefaultPasswordRuleConf mockRuleA = mock(DefaultPasswordRuleConf.class);
         when(mockRuleA.getSpecialChars()).thenReturn(List.of('$'));
 
         DefaultPasswordRuleConf mockRuleB = mock(DefaultPasswordRuleConf.class);
         when(mockRuleB.getIllegalChars()).thenReturn(List.of('$'));
 
-        // Esecuzione
         DefaultPasswordRuleConf result = this.generator.merge(Arrays.asList(mockRuleA, mockRuleB));
 
-        // Verifica: La proibizione deve prevalere (o essere presente), quindi il carattere deve essere illegale
         boolean condition = result.getIllegalChars().contains('$');
         assertTrue(condition);
     }
@@ -454,9 +433,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(t);
     }
 
-    // =========================================================================
-    // PARTIZIONI BOOLEANI
-    // =========================================================================
 
     @Test
     public void testUsernameAllowedTrue() {
@@ -476,9 +452,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // PARTIZIONI COLLECTION INTERNE
-    // =========================================================================
 
     @Test
     public void testInternalListNullMocked() {
@@ -522,9 +495,6 @@ public class ManualBeforeDefaultPasswordGeneratorMergeTest {
         assertTrue(condition);
     }
 
-    // =========================================================================
-    // COMBINAZIONI MULTIDIMENSIONALI E PROPRIETÀ ALGEBRICHE
-    // =========================================================================
 
     @Test
     public void testCommutativityProperty() {

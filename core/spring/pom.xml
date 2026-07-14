@@ -169,7 +169,7 @@ under the License.
       <plugin>
         <groupId>org.pitest</groupId>
         <artifactId>pitest-maven</artifactId>
-        <version>1.25.0</version> <!-- Questa è una versione estremamente stabile e compatibile -->
+        <version>1.25.0</version>
         <dependencies>
           <dependency>
             <groupId>org.pitest</groupId>
@@ -184,7 +184,7 @@ under the License.
           <targetTests>
             <param>org.apache.syncope.core.spring.security.Manual*</param>
           </targetTests>
-          <!-- Importante: questo aiuta a evitare errori di comunicazione col Minion -->
+
           <jvmArgs>
             <jvmArg>-ea</jvmArg>
           </jvmArgs>

@@ -132,7 +132,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         when(attrGetter.apply(any(), anyString())).thenReturn(mockAttr);
     }
 
-    // --- TEST ORIGINALI + EXTRA ---
     @Test
     public void parseException() throws ParseException {
         when(intAttrNameParser.parse(anyString(), any(AnyTypeKind.class)))
@@ -291,10 +290,8 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         }
     }
 
-    // --- TEST PER getIntValues (TC26-TC46) ---
 
     @Test
-    @DisplayName("TC26: External User Trovato")
     void testExternalUserFound() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getExternalUser()).thenReturn("extUser");
@@ -306,7 +303,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC27: External User Non Trovato")
     void testExternalUserNotFound() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getExternalUser()).thenReturn("extUserNotFound");
@@ -316,7 +312,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC28: External Group Trovato")
     void testExternalGroupFound() throws Exception {
         User user = mock(User.class);
         Group group = mock(Group.class);
@@ -329,7 +324,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC29: External AnyObject Trovato")
     void testExternalAnyObjectFound() throws Exception {
         User user = mock(User.class);
         AnyObject anyObject = mock(AnyObject.class);
@@ -342,7 +336,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC30: Membership Trovata")
     void testMembershipFound() throws Exception {
         User user = mock(User.class);
         Group group = mock(Group.class);
@@ -357,7 +350,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC31: Relationship Trovata")
     void testRelationshipFound() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getRelationshipInfo()).thenReturn(relationshipInfoMock);
@@ -376,7 +368,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC32: Campo Username con Account")
     void testFieldUsername() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("username");
@@ -387,7 +378,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC33: Campo Realm")
     void testFieldRealm() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("realm");
@@ -398,7 +388,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC34: Campo Password (Ramo Vuoto)")
     void testFieldPassword() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("password");
@@ -407,7 +396,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC35: Campo uManager")
     void testFieldUManager() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("uManager");
@@ -419,7 +407,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC36: Campo gManager")
     void testFieldGManager() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("gManager");
@@ -431,7 +418,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC37: Campo mustChangePassword")
     void testFieldMustChangePassword() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("mustChangePassword");
@@ -441,7 +427,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC38: Reflection - TemporalAccessor")
     void testReflectionTemporalAccessor() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("customDate");
@@ -456,7 +441,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC39: Reflection - Boolean")
     void testReflectionBoolean() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("customBool");
@@ -467,13 +451,11 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
             org.apache.syncope.core.provisioning.api.MappingManager.IntValues result =
                     mappingManager.getIntValues(resource, provision, item, intAttrName, AttrSchemaType.Boolean, user, accGetter, attrGetter);
 
-            // Il manager lo ha salvato come Stringa ("true") a causa del controllo fallito su Boolean.TYPE
             assertEquals("true", result.values().get(0).getStringValue());
         }
     }
 
     @Test
-    @DisplayName("TC40: Reflection - Double")
     void testReflectionDouble() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("customDouble");
@@ -484,13 +466,11 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
             org.apache.syncope.core.provisioning.api.MappingManager.IntValues result =
                     mappingManager.getIntValues(resource, provision, item, intAttrName, AttrSchemaType.Double, user, accGetter, attrGetter);
 
-            // Salvato nell'else come Stringa ("99.9")
             assertEquals("99.9", result.values().get(0).getStringValue());
         }
     }
 
     @Test
-    @DisplayName("TC41: Reflection - Long")
     void testReflectionLong() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("customLong");
@@ -501,13 +481,11 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
             org.apache.syncope.core.provisioning.api.MappingManager.IntValues result =
                     mappingManager.getIntValues(resource, provision, item, intAttrName, AttrSchemaType.Long, user, accGetter, attrGetter);
 
-            // Salvato nell'else come Stringa ("100")
             assertEquals("100", result.values().get(0).getStringValue());
         }
     }
 
     @Test
-    @DisplayName("TC42: Reflection - Fallback String")
     void testReflectionString() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("customString");
@@ -522,7 +500,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC43: Reflection - Exception Catch Block")
     void testReflectionException() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("errorField");
@@ -534,7 +511,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC44: Schema PLAIN con Membership")
     void testSchemaPlainWithMembership() throws Exception {
         User user = mock(User.class);
         Group group = mock(Group.class);
@@ -552,7 +528,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC45: Schema DERIVED con Relationship")
     void testSchemaDerivedWithRelationship() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getSchemaInfo()).thenReturn(schemaInfoMock);
@@ -573,7 +548,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("TC46: Esecuzione Item Transformers")
     void testItemTransformersAreExecuted() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("key");
@@ -589,7 +563,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
 
 
     @Test
-    @DisplayName("Extra: External Group Non Trovato (Line 701)")
     void testExternalGroupNotFound() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getExternalGroup()).thenReturn("missingGroup");
@@ -602,7 +575,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: RelationshipType Non Trovato (Line 712)")
     void testRelationshipTypeNotFound() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getRelationshipInfo()).thenReturn(relationshipInfoMock);
@@ -616,7 +588,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Username su ref non Account (Line 739 false branch)")
     void testUsernameNotAccount() throws Exception {
         Group group = mock(Group.class);
         when(intAttrName.getField()).thenReturn("username");
@@ -628,14 +599,12 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: GManager con valore valido (Lines 766, 770, 771)")
     void testGManagerWithValue() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getField()).thenReturn("gManager");
         when(provision.getAnyType()).thenReturn(AnyTypeKind.GROUP.name());
         when(provision.getMapping()).thenReturn(mappingMock);
 
-        // FIX: getGManager ritorna un Group, non un User!
         Group gManagerMock = mock(Group.class);
         doReturn(gManagerMock).when(user).getGManager();
 
@@ -649,7 +618,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Schema PLAIN con Relationship (Lines 816-818)")
     void testPlainWithRelationship() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getSchemaInfo()).thenReturn(schemaInfoMock);
@@ -672,7 +640,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         val.setStringValue("relValue");
         doReturn(val).when(attrMock).getUniqueValue();
 
-        // Uso di doReturn e dei Matcher generici per evitare "Cannot resolve method"
         doReturn(Optional.of(attrMock)).when(user).getPlainAttr(anyString(), any(Relationship.class));
 
         org.apache.syncope.core.provisioning.api.MappingManager.IntValues result =
@@ -682,7 +649,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Plain attr senza valori (Line 824 false branch)")
     void testPlainAttrValuesNull() throws Exception {
         User user = mock(User.class);
         when(intAttrName.getSchemaInfo()).thenReturn(schemaInfoMock);
@@ -694,7 +660,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         doReturn(null).when(attrMock).getUniqueValue();
         doReturn(null).when(attrMock).getValues();
 
-        // Fix: il mock si chiama attrGetter e usiamo doReturn
         doReturn(attrMock).when(attrGetter).apply(any(), anyString());
 
         org.apache.syncope.core.provisioning.api.MappingManager.IntValues result =
@@ -704,7 +669,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Schema DERIVED con Membership (Line 836)")
     void testDerivedWithMembership() throws Exception {
         User user = mock(User.class);
         Group group = mock(Group.class);
@@ -717,8 +681,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         doReturn(Optional.of(group)).when(groupDAO).findByName("groupName");
         when(group.getKey()).thenReturn("groupKey");
         doReturn(Optional.of(membershipMock)).when(user).getMembership("groupKey");
-
-        // Fix sull'ambiguità: usiamo "any" con esplicita indicazione della classe Groupable
         doReturn("derMembValue").when(derAttrHandler).getValue(
                 any(org.apache.syncope.core.persistence.api.entity.Groupable.class),
                 any(org.apache.syncope.core.persistence.api.entity.Membership.class),
@@ -732,12 +694,7 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
 
-    // =======================================================================
-    // TEST PER IL METODO setIntValues (Item, Attribute, AnyTO) - PULL LOGIC
-    // =======================================================================
-
     @Test
-    @DisplayName("SetIntValues: Esecuzione ItemTransformer (Line 1042)")
     void testSetIntValues_Transformers() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -761,7 +718,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo Password su UserTO (Lines 1058-1061)")
     void testSetIntValues_FieldPassword() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -779,7 +735,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo Username su UserTO (Lines 1064-1067)")
     void testSetIntValues_FieldUsername() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -797,7 +752,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo Name su GroupTO (Line 1072)")
     void testSetIntValues_FieldName_Group() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -815,7 +769,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo Name su AnyObjectTO (Line 1074)")
     void testSetIntValues_FieldName_AnyObject() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -833,7 +786,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo mustChangePassword (Lines 1081-1084)")
     void testSetIntValues_FieldMustChangePassword() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -851,7 +803,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo uManager (Line 1087)")
     void testSetIntValues_FieldUManager() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -869,7 +820,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Campo gManager (Line 1091)")
     void testSetIntValues_FieldGManager() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -887,7 +837,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Schema PLAIN di tipo Binary (Lines 1118-1121)")
     void testSetIntValues_PlainSchema_Binary() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -918,7 +867,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Schema PLAIN con Membership (Lines 1100-1104, 1131-1136)")
     void testSetIntValues_PlainSchema_Membership() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -951,7 +899,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Schema DERIVED sull'Any principale (Lines 1141-1144)")
     void testSetIntValues_DerivedSchema_NoMembership() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -978,7 +925,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("SetIntValues: Schema DERIVED con Membership (Lines 1146-1151)")
     void testSetIntValues_DerivedSchema_Membership() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1009,12 +955,7 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         assertTrue(userTO.getMemberships().get(0).getDerAttr("derMembAttr").isPresent());
     }
 
-    // =======================================================================
-    // TEST EXTRA: COPERTURA RAMI CONDIZIONALI "FALSE" e "DEFAULT"
-    // =======================================================================
-
     @Test
-    @DisplayName("Extra: SetIntValues con Attr null (Line 1039 false)")
     void testSetIntValues_AttrNull() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1029,7 +970,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: SetIntValues primo valore null (Line 1055 false)")
     void testSetIntValues_ValuesGetFirstNull() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1048,7 +988,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: 'password' ignorato su GroupTO (Line 1058 false)")
     void testSetIntValues_WrongTO_GroupTOPassword() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1059,13 +998,10 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         doReturn("password").when(nameMock).getField();
 
         org.apache.syncope.common.lib.to.GroupTO groupTO = new org.apache.syncope.common.lib.to.GroupTO();
-
-        // Assert che non scoppino eccezioni tentando di parsare la password per un Gruppo
         org.junit.jupiter.api.Assertions.assertDoesNotThrow(() -> mappingManager.setIntValues(itemMock, attrMock, groupTO));
     }
 
     @Test
-    @DisplayName("Extra: 'name' salta default switch (Line 1075 default)")
     void testSetIntValues_WrongTO_UserTOName() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1078,13 +1014,11 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
         org.apache.syncope.common.lib.to.UserTO userTO = new org.apache.syncope.common.lib.to.UserTO();
         mappingManager.setIntValues(itemMock, attrMock, userTO);
 
-        // Verifica che lo switch sia caduto nel default e il TO sia pulito
         assertNull(userTO.getUsername());
     }
 
 
     @Test
-    @DisplayName("Extra: GroupTO (non-Groupable) con Plain Schema (Lines 1100, 1128)")
     void testSetIntValues_GroupTONotGroupable_PLAIN() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1109,7 +1043,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: GroupTO (non-Groupable) con Derived Schema (Line 1143)")
     void testSetIntValues_GroupTONotGroupable_DERIVED() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1133,7 +1066,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Group non trovato nel DAO con PLAIN Schema (Lines 1104, 1128)")
     void testSetIntValues_GroupNotFoundInDAO_PLAIN() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");
@@ -1159,7 +1091,6 @@ public class ManualAfterJacocoDefaultMappingManagerTest {
     }
 
     @Test
-    @DisplayName("Extra: Group non trovato nel DAO con DERIVED Schema (Line 1143)")
     void testSetIntValues_GroupNotFoundInDAO_DERIVED() throws Exception {
         Item itemMock = mock(Item.class);
         when(itemMock.getIntAttrName()).thenReturn("dummy");

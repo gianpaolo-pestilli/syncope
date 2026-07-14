@@ -56,11 +56,8 @@ public class ManualAfterAllDefaultMappingManagerTest {
                 intAttrNameParser, encryptorManager, jexlTools));
     }
 
-    // =========================================================================
-    // KILLER 1: prepareAttr - Linea 512 (DerSchema)
-    // =========================================================================
     @Test
-    @DisplayName("prepareAttr: forza fallback a String per DerSchema (Line 512)")
+    @DisplayName("prepareAttr: forza fallback a String per DerSchema")
     void testPrepareAttr_DerSchemaFallback() throws Exception {
         Item item = mock(Item.class);
         when(item.getIntAttrName()).thenReturn("derField");
@@ -86,11 +83,8 @@ public class ManualAfterAllDefaultMappingManagerTest {
         verify(mappingManager).getIntValues(any(), any(), any(), any(), eq(AttrSchemaType.String), any(), any(), any());
     }
 
-    // =========================================================================
-    // KILLER 2: prepareAttr - Linea 553 (Mismatch SchemaType)
-    // =========================================================================
     @Test
-    @DisplayName("prepareAttr: mismatch schemaType (Line 553)")
+    @DisplayName("prepareAttr: mismatch schemaType")
     void testPrepareAttr_SchemaMismatch() throws Exception {
         Item item = mock(Item.class);
         when(item.getIntAttrName()).thenReturn("field");
@@ -121,11 +115,8 @@ public class ManualAfterAllDefaultMappingManagerTest {
         }
     }
 
-    // =========================================================================
-    // KILLER 3: getIntValues - Linea 762/765 (uManager)
-    // =========================================================================
     @Test
-    @DisplayName("getIntValues: uManager branch check (Line 762)")
+    @DisplayName("getIntValues: uManager branch check")
     void testGetIntValues_UManager_BranchCheck() {
         Item item = mock(Item.class);
         when(item.getIntAttrName()).thenReturn("uManager");
@@ -144,14 +135,8 @@ public class ManualAfterAllDefaultMappingManagerTest {
         assertNotNull(result); // Asserzione singola
     }
 
-    // =========================================================================
-    // KILLER 4: getIntValues - Linea 798 (Reflection Long)
-    // =========================================================================
-// =========================================================================
-    // KILLER 4: getIntValues - Reflection (Linee 794-802)
-    // =========================================================================
     @Test
-    @DisplayName("getIntValues: reflection su campo Long (Uccide mutanti di tipo)")
+    @DisplayName("getIntValues")
     void testGetIntValues_Reflection_Long() throws Exception {
         Item item = mock(Item.class);
         when(item.getIntAttrName()).thenReturn("val");
@@ -164,7 +149,6 @@ public class ManualAfterAllDefaultMappingManagerTest {
 
             IntValues result = mappingManager.getIntValues(null, null, item, intAttrName, AttrSchemaType.Long, user, null, null);
 
-            // Il check flessibile: controlla Long se presente, altrimenti Stringa (copre entrambi i rami)
             PlainAttrValue val = result.values().get(0);
             String actual = (val.getLongValue() != null) ? val.getLongValue().toString() : val.getStringValue();
             assertEquals("999", actual);
@@ -185,7 +169,6 @@ public class ManualAfterAllDefaultMappingManagerTest {
 
             IntValues result = mappingManager.getIntValues(null, null, item, intAttrName, AttrSchemaType.Double, user, null, null);
 
-            // Il check flessibile
             PlainAttrValue val = result.values().get(0);
             String actual = (val.getDoubleValue() != null) ? val.getDoubleValue().toString() : val.getStringValue();
             assertEquals("10.5", actual);

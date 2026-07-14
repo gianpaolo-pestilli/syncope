@@ -24,7 +24,6 @@ public class ManualBeforeDefaultMappingManagerProcessAttrTest {
         preparedAttrMock = mock(PreparedAttr.class);
     }
 
-    // --- GRUPPO 1: INPUT PREPAREDATTR (5 partizioni) ---
 
     @Test
     public void TC01_PrepAttr_Null() {
@@ -79,8 +78,6 @@ public class ManualBeforeDefaultMappingManagerProcessAttrTest {
         assertTrue(result.isPresent() && "http://link.com".equals(result.get()) && attributesSet.size() == 1,
                 "Ritorna l'indirizzo e aggiunge il payload al set");
     }
-
-    // --- GRUPPO 2: INPUT SET DI ATTRIBUTE E COLLISIONI (6 partizioni) ---
 
     @Test
     public void TC06_Set_Null() {
@@ -155,7 +152,6 @@ public class ManualBeforeDefaultMappingManagerProcessAttrTest {
                 "Nuovo attributo deve essere aggiunto agli altri due preservandoli");
     }
 
-    // --- GRUPPO 3: STATO DI ATTRIBUTE E MERGE DEI VALORI (Partizioni di valore) ---
 
     @Test
     public void TC12_AttrState_EntrambiSingoloValore() {

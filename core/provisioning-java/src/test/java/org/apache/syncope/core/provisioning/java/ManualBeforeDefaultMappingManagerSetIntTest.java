@@ -34,7 +34,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
 
     @Mock private IntAttrNameParser intAttrNameParser;
 
-    // I Mock "Salvavita" scoperti analizzando il codice sorgente
     @Mock private ImplementationDAO implementationDAO;
     @Mock private GroupDAO groupDAO;
 
@@ -67,9 +66,7 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         lenient().when(baseIntAttrName.getSchemaInfo()).thenReturn(schemaInfo);
     }
 
-    // =========================================================================
-    // GRUPPO 1: IL CASO BASE
-    // =========================================================================
+
     @Test
     @DisplayName("TC01 - Base Choice: UserTO | Singolo | Senza Trasf | Parzialmente Popolato")
     void testTC01_BaseChoice() {
@@ -81,9 +78,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         assertEquals("valoreMappato", userTO.getPlainAttr("username").get().getValues().get(0));
     }
 
-    // =========================================================================
-    // GRUPPO 2: VARIAZIONE DELL'ENTITÀ (AnyTO)
-    // =========================================================================
     @Nested
     @DisplayName("Variazione della dimensione: Input (AnyTO)")
     class AnyTOVariations {
@@ -117,9 +111,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         }
     }
 
-    // =========================================================================
-    // GRUPPO 3: VARIAZIONE DEL DATO (Attribute)
-    // =========================================================================
     @Nested
     @DisplayName("Variazione della dimensione: Input (Attribute)")
     class AttributeVariations {
@@ -160,9 +151,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         }
     }
 
-    // =========================================================================
-    // GRUPPO 4: VARIAZIONE DELLA CONFIGURAZIONE (Item)
-    // =========================================================================
     @Nested
     @DisplayName("Variazione della dimensione: Input (Item)")
     class ItemVariations {
@@ -204,9 +192,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         }
     }
 
-    // =========================================================================
-    // GRUPPO 5: VARIAZIONE DELLO STATO (Sdoppiati per garantire 1 Assert/Test)
-    // =========================================================================
     @Nested
     @DisplayName("Variazione della dimensione: Stato Oggetto")
     class StateVariations {
@@ -247,9 +232,6 @@ public class ManualBeforeDefaultMappingManagerSetIntTest {
         }
     }
 
-    // =========================================================================
-    // GRUPPO 6: COMBINAZIONI E EDGE CASES
-    // =========================================================================
     @Nested
     @DisplayName("Combinazioni Pairwise ed Edge Cases")
     class ComplexCombinations {

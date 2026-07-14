@@ -75,18 +75,15 @@ public class ManualIntegrationDefaultMappingManagerTest {
 
         when(intAttrName.getSchemaInfo()).thenReturn(schemaInfo);
 
-        // RIMOSSO: when(intAttrName.getName()).thenReturn("..."); -> INVENTATO
 
         when(schemaInfo.type()).thenReturn(SchemaType.PLAIN);
         when(schemaInfo.schema()).thenReturn(plainSchema);
 
-        // RIMOSSO: when(schemaInfo.getKey()).thenReturn("..."); -> INVENTATO
 
-        when(plainSchema.getKey()).thenReturn("schemaKey"); // Questo esiste ed è sufficiente!
+        when(plainSchema.getKey()).thenReturn("schemaKey");
         when(plainSchema.getType()).thenReturn(AttrSchemaType.String);
     }
 
-    // Costruttore di dati grezzi per simulare il DB
     private PlainAttrGetter createMockAttrGetter(String... values) {
         return (a, schema) -> {
             PlainAttr plainAttr = mock(PlainAttr.class);
@@ -94,9 +91,6 @@ public class ManualIntegrationDefaultMappingManagerTest {
             doReturn("schemaKey").when(plainAttr).getSchema();
             doReturn(java.util.Arrays.asList(values)).when(plainAttr).getValuesAsStrings();
 
-            // LA SOLUZIONE DEFINITIVA: Usiamo oggetti REALI invece di Mock!
-            // Poiché Syncope esegue una deep-copy (clonePlainAttrValue), i mock
-            // perdevano i dati. Passando un'istanza vera, la copia è perfetta.
             List<PlainAttrValue> realValues = new java.util.ArrayList<>();
             for (String val : values) {
                 PlainAttrValue realVal = new PlainAttrValue();
@@ -104,7 +98,6 @@ public class ManualIntegrationDefaultMappingManagerTest {
                 realValues.add(realVal);
             }
 
-            // Instradiamo Syncope esattamente come si aspetta
             if (values.length == 1) {
                 doReturn(realValues.get(0)).when(plainAttr).getUniqueValue();
                 doReturn(realValues).when(plainAttr).getValues();
@@ -117,7 +110,6 @@ public class ManualIntegrationDefaultMappingManagerTest {
         };
     }
 
-    // --- SCENARI DAL TUO REPORT ---
 
     @Test
     public void IT01_DatoSenzaTrasformazioni_SetVuoto() {

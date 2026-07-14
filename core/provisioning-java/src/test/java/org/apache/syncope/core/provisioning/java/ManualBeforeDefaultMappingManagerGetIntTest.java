@@ -65,9 +65,6 @@ public class ManualBeforeDefaultMappingManagerGetIntTest {
         );
     }
 
-    // =========================================================================
-    // SEZIONE 1: HAPPY PATH E POLIMORFISMO DELLE ENTITÀ
-    // =========================================================================
 
     @Test
     @DisplayName("TC01: Entità Utente, Dato Anagrafico, In chiaro, Presente")
@@ -111,9 +108,6 @@ public class ManualBeforeDefaultMappingManagerGetIntTest {
         assertFalse(result.values().isEmpty(), "Il manager deve elaborare correttamente un AnyObject");
     }
 
-    // =========================================================================
-    // SEZIONE 2: FORMATI E SICUREZZA (AttrSchemaType)
-    // =========================================================================
 
     @Test
     @DisplayName("TC04: Dato di Sicurezza, Cifrato")
@@ -185,9 +179,6 @@ public class ManualBeforeDefaultMappingManagerGetIntTest {
         assertEquals(AttrSchemaType.Date, result.attrSchemaType(), "Il tipo Date deve riflettersi nell'output");
     }
 
-    // =========================================================================
-    // SEZIONE 3: ROBUSTEZZA E NEGATIVE TESTING (Input Nulli o Invalidi)
-    // =========================================================================
 
     @Test
     @DisplayName("TC09: Input Any Nullo - Tolleranza ai Guasti")
@@ -251,10 +242,6 @@ public class ManualBeforeDefaultMappingManagerGetIntTest {
         assertNotNull(result, "Il sistema deve restituire una struttura IntValues valida anche senza Provision");
     }
 
-    // =========================================================================
-    // SEZIONE 4: COMPORTAMENTO DEI DELEGATI (Stato del dato cercato)
-    // =========================================================================
-
     @Test
     @DisplayName("TC15: PlainAttrGetter restituisce Null (Dato Non Presente)")
     void testPlainAttrGetterReturnsNull() {
@@ -314,9 +301,6 @@ public class ManualBeforeDefaultMappingManagerGetIntTest {
         ), "Il passaggio nel blocco username richiede obbligatoriamente il delegato AccountGetter");
     }
 
-    // =========================================================================
-    // SEZIONE 5: CONTESTI INCOERENTI E TRASFORMAZIONI
-    // =========================================================================
 
     @Test
     @DisplayName("TC19: Provision Incoerente - Regola per Utente applicata a Gruppo")

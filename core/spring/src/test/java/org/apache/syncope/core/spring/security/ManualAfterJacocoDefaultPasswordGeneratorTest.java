@@ -38,7 +38,6 @@ public class ManualAfterJacocoDefaultPasswordGeneratorTest {
         Implementation impl = mock(Implementation.class);
         when(impl.getKey()).thenReturn("testKey");
 
-        // Uso di singletonList compatibile con tutte le versioni Java
         doReturn(Collections.singletonList(impl)).when(policy).getRules();
 
         PasswordRule mockRule = mock(PasswordRule.class);
@@ -66,13 +65,13 @@ public class ManualAfterJacocoDefaultPasswordGeneratorTest {
 
     @Test
     void testMergeMaxLengthBranchCoverage() {
-        // 1. Ramo True: MaxLength < 64
+
         DefaultPasswordRuleConf ruleConfValid = new DefaultPasswordRuleConf();
         ruleConfValid.setMaxLength(10);
         DefaultPasswordRuleConf res1 = generator.merge(Collections.singletonList(ruleConfValid));
         assertEquals(10, res1.getMaxLength());
 
-        // 2. Ramo False: MaxLength >= 64
+
         DefaultPasswordRuleConf ruleConfTooLong = new DefaultPasswordRuleConf();
         ruleConfTooLong.setMaxLength(100);
         DefaultPasswordRuleConf res2 = generator.merge(Collections.singletonList(ruleConfTooLong));
